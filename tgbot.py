@@ -4,8 +4,8 @@ import asyncio
 import telegram
 from datetime import datetime
 import sys, json, time
-  
-botinfo_file="./botinfo.json"
+
+botinfo_file="/usr/local/etc/telegrambot-scripts/botinfo.json"
 
 content_begin = '''
 # Broadcast Message

@@ -5,7 +5,7 @@ import telegram
 from datetime import datetime
 import time, json
 
-botinfo_file="./botinfo.json"
+botinfo_file="/usr/local/etc/telegrambot-scripts/botinfo.json"
 
 content = '''
 # Broadcast Message
