@@ -1,0 +1,7 @@
+[Unit]
+Description=Telegram Bot Sends Hibernation Message
+After=hibernate.target
+[Service]
+ExecStart=/usr/local/bin/post-hibernate-botmsg.py
+[Install]
+WantedBy=hibernate.target
