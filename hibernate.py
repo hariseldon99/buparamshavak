@@ -21,10 +21,11 @@ dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
 message = content + dt_string
 
 cmd_gui = '/usr/local/bin/notify-send-all -t 10 "Hibernating Now ..."'  
+#cmd_stopdwagent = '/usr/bin/systemctl is-active dwagent && /usr/bin/systemctl stop dwagent'
 cmd_tty = '/usr/bin/wall -t 10 "Hibernating Now ..."'
-cmd_hibernate = 'systemctl hibernate'
+cmd_hibernate = '/usr/bin/systemctl hibernate'
 
-async def main():
+async def telegram_send():
     f = open(botinfo_file)
     botinfo = json.load(f)
     api_key = botinfo["api_key"]
@@ -37,8 +38,9 @@ async def main():
 if __name__ == '__main__':
     try:
         os.system(cmd_gui)
+        #os.system(cmd_stopdwagent)
         os.system(cmd_tty)
-        asyncio.run(main())
+        asyncio.run(telegram_send())
         time.sleep(10.0)
         os.system(cmd_hibernate)
     except Exception:
