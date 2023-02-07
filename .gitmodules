@@ -1,0 +1,3 @@
+[submodule "dwagent-multiuser"]
+	path = dwagent-multiuser
+	url = https://github.com/hariseldon99/dwagent-multiuser
