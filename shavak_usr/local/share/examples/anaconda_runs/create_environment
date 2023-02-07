@@ -1,0 +1,3 @@
+#!/bin/bash
+source /usr/local/condaenv/bin/activate
+conda create --prefix ~/.testenv

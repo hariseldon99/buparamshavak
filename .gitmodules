@@ -1,3 +1,9 @@
 [submodule "dwagent-multiuser"]
 	path = dwagent-multiuser
 	url = https://github.com/hariseldon99/dwagent-multiuser
+[submodule "slurm_showq"]
+	path = slurm_showq
+	url = https://github.com/siliu-tacc/slurm_showq
+[submodule "ubuntu-slurm"]
+	path = ubuntu-slurm
+	url = https://github.com/mknoxnv/ubuntu-slurm
