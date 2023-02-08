@@ -4,3 +4,6 @@
 [submodule "ubuntu-slurm"]
 	path = ubuntu-slurm
 	url = https://github.com/mknoxnv/ubuntu-slurm
+[submodule "slurm_showq"]
+	path = slurm_showq
+	url = https://github.com/fasrc/slurm_showq
