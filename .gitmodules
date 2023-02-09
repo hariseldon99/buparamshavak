@@ -7,3 +7,7 @@
 [submodule "slurm_showq"]
 	path = slurm_showq
 	url = https://github.com/fasrc/slurm_showq
+[submodule "dmtcp"]
+	path = dmtcp
+	url = https://github.com/dmtcp/dmtcp
+	branch = 2.6
