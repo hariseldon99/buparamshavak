@@ -4,7 +4,7 @@ I'm reproducing a conversation I just had with ChatGPT A.I. about a technical is
 
 ## Background
 
-I'm having trouble getting OpenMPI, SLURM, and DMTCP to cooperate in my 'cluster' (which is actually just I'm having problems getting OpenMPI, SLURM and DMTCP to work together in my 'cluster' (actually, it's just [this single 32-core server](https://tyronesystems.com/servers/DIT400TR-55L.html) with 193 GB of RAM running Ubuntu 20.04 LTS that runs everything in one machine). Because I have to schedule daily downtimes due to infrastructure limits, I'd need the jobs to be checkpointed and recovered on reboot.
+I'm having trouble getting OpenMPI, SLURM, and DMTCP to cooperate in my 'cluster' (actually, it's just [this single 32-core server](https://tyronesystems.com/servers/DIT400TR-55L.html) with 193 GB of RAM running Ubuntu 20.04 LTS that runs everything in one machine). Because I have to schedule daily downtimes due to infrastructure limits, I'd need the jobs to be checkpointed and recovered on reboot.
 
 I was testing DMTCP checkpointing with MPI on a VM running Ubuntu 20.04LTS on February 10, 2023. I downloaded and installed [DMTCP 2.6.0](https://github.com/dmtcp/dmtcp/tree/47746500dc2c2a5f5de0c984d102a40acb21f140) from their GitHub repository . Checkpointing serial jobs worked properly, however MPI jobs, whether run from a shell or through SLURM, dropped library errors. This is what occurred:
 
