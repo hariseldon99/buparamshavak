@@ -1,4 +1,4 @@
-# Conversation between ChatGPT and I 
+# Tech Support Conversation with ChatGPT 
 
 I'm reproducing a conversation I just had with ChatGPT A.I. about a technical issue with my Param Shavak DLGPU Cluster. In short, I had questions concerning Checkpointing, MPI, and the SLURM tool and decided to ask ChatGPT on the spur of the moment. Here is the complete chat.
 
