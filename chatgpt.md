@@ -10,9 +10,43 @@ I was testing DMTCP checkpointing with MPI on a VM running Ubuntu 20.04LTS on Fe
 
 
 ```
-$ dmtcp_launch -i 20 --rm mpirun -np 10 ./mpi_count 
-mpirun: symbol lookup error: /usr/local/lib/dmtcp/libdmtcp_batch-queue.so: undefined symbol: process_fd_event
+$ dmtcp_launch -i 20 mpirun -np 10 ./mpi_count 
 ```
+
+<details>
+    <summary>
+        A whole lotta errors!
+    </summary>
+... A whole lotta messages ...
+    
+Message: Unimplemented file type.                                                                                                            
+    orterun: Terminating...                                                                                                                  
+    Backtrace:                                                                                                                               
+        1 jassert_internal::JAssert::~JAssert() in /usr/local/lib/dmtcp/libdmtcp.so 0x7fe951a987f2                                           
+        2 dmtcp::FileConnList::processFileConnection(int, char const*, int, unsigned int) in /usr/local/lib/dmtcp/libdmtcp_ipc.so 0x7fe951b3b66c                                                                                                                                          
+        3 dmtcp_FileConnList_EventHook(eDmtcpEvent, _DmtcpEventData_t*) in /usr/local/lib/dmtcp/libdmtcp_ipc.so 0x7fe951b3bfb3               
+        4 dmtcp::PluginManager::eventHook(eDmtcpEvent, _DmtcpEventData_t*) in /usr/local/lib/dmtcp/libdmtcp.so 0x7fe951a65eff                
+        5  in /usr/local/lib/dmtcp/libdmtcp.so 0x7fe951a70fd1                                                                                
+        6  in /usr/local/lib/dmtcp/libdmtcp.so 0x7fe951a710b2                                                                                
+        7 openat64 in /usr/local/lib/dmtcp/libdmtcp.so 0x7fe951a71b51                                                                        
+        8  in /lib/x86_64-linux-gnu/libudev.so.1 0x7fe95123ef49                                                                              
+        9  in /lib/x86_64-linux-gnu/libudev.so.1 0x7fe9512434bb                                                                              
+        10  in /lib/x86_64-linux-gnu/libudev.so.1 0x7fe951243c64                                                                             
+        11  in /lib/x86_64-linux-gnu/libudev.so.1 0x7fe9512447ff                                                                             
+        12 udev_device_new_from_subsystem_sysname in /lib/x86_64-linux-gnu/libudev.so.1 0x7fe95124fd8f                                       
+        13  in /lib/x86_64-linux-gnu/libhwloc.so.15 0x7fe951295489                                                                           
+        14  in /lib/x86_64-linux-gnu/libhwloc.so.15 0x7fe9512976b3                                                                           
+        15  in /lib/x86_64-linux-gnu/libhwloc.so.15 0x7fe95129d54c                                                                           
+        16  in /lib/x86_64-linux-gnu/libhwloc.so.15 0x7fe95126e01e                                                                           
+        17 hwloc_topology_load in /lib/x86_64-linux-gnu/libhwloc.so.15 0x7fe9512763a0                                                        
+        18 opal_hwloc_base_get_topology in /lib/x86_64-linux-gnu/libopen-pal.so.40 0x7fe951915564                                            
+        19  in /usr/lib/x86_64-linux-gnu/openmpi/lib/openmpi3/mca_ess_hnp.so 0x7fe94e7526be                                                  
+        20 orte_init in /lib/x86_64-linux-gnu/libopen-rte.so.40 0x7fe9519d82fc                                                               
+        21 orte_submit_init in /lib/x86_64-linux-gnu/libopen-rte.so.40 0x7fe9519dcc86                                                        
+        22  in mpirun 0x555d717d23a3                                                                                                         
+        23 __libc_start_main in /lib/x86_64-linux-gnu/libc.so.6 0x7fe95167b083                                                               
+        24  in mpirun 0x555d717d21fe
+        </details>
 
 The source code for the MPI program is [here](https://raw.githubusercontent.com/cornellcac/CR-demos/master/demos/MPI/mpi_count.c). 
 
