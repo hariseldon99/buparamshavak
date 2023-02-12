@@ -1,0 +1,18 @@
+Date:20230212
+
+Serial Jobs:
+Works with non-graphics serial python, albeit inconsistently
+Does not work with matplotlib (graphics/X. That may need additional configging)
+
+parallel Jobs:
+Works with python multiprocessing pool, albeit with many error messages, and one checkpoint file per process.
+Expected not to work with mpi4py until the mpicc compatibility with dmtcp is resolved
+Not tested graphics applications
+
+
+Commands:
+DMTCP_DL_PLUGIN=0 dmtcp_launch -i 2 python3 ./vdp.py
+OR
+DMTCP_DL_PLUGIN=0 dmtcp_launch -i 2 python3 ./vdp_pool.py
+
+DMTCP_DL_PLUGIN=0 ./dmtcp_restart_script.sh

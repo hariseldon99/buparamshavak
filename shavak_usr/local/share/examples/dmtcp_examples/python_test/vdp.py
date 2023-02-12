@@ -12,7 +12,7 @@ times = np.linspace(0.0, t_final, 1000)
 # Grid of initial conditions, recast as an iterable object 'ics'
 y0m, y0mx = -10, 10
 y1m, y1mx = -6, 6
-Y0, Y1 = np.mgrid[y0m:y0mx:10j, y1m:y1mx:10j]
+Y0, Y1 = np.mgrid[y0m:y0mx:11j, y1m:y1mx:11j]
 ics = np.vstack([Y0.ravel(), Y1.ravel()]).T
 
 def func(t, y, g):
