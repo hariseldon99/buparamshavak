@@ -122,3 +122,7 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+#Uncompressed tarballs
+hbict-1.0
+dmtcp-master

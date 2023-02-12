@@ -5,7 +5,7 @@
 #include <sys/time.h>
 
 
-#define N 2000
+#define N 5000
 
 int A[N][N];
 int B[N][N];

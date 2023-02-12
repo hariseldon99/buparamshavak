@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
+import sys
 from tqdm import tqdm
 import numpy as np
 from scipy.integrate import solve_ivp
 import h5py
 from multiprocessing.pool import Pool
-nprocs = 6
+nprocs = int(sys.argv[1])
 gammas = [0.4, 0.9, 1.5]
 t_final = 30
 times = np.linspace(0.0, t_final, 1000)

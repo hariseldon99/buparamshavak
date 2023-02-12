@@ -2,8 +2,3 @@ Date:20230212
 
 Serial Jobs:
 Works without issue
-
-Command:
-
-DMTCP_DL_PLUGIN=0 dmtcp_launch -i 1 ./gsl_eigenrand
-DMTCP_DL_PLUGIN=0 ./dmtcp_restart_script.sh

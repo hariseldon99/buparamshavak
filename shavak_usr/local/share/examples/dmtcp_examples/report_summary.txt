@@ -1,0 +1,11 @@
+Date:20230212
+
+Check each directory for report text file for details on individual tests
+
+Currently, mpi jobs are the only ones that fail completely, probably due to miscompiled openmpi taken from ubuntu repos.
+
+The slurm plugin described in https://github.com/dmtcp/dmtcp/tree/master/plugin/batch-queue
+is not working. using srun dmtcp_launch with --rm produces the error:
+/usr/local/lib/dmtcp/libdmtcp_batch-queue.so: undefined symbol: process_fd_event
+
+This is true regardless of whether MPI is being used or not. Running dcmp_launch directly without srun or the --rm options works.

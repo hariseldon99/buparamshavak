@@ -1,0 +1,11 @@
+SLURM_JOBID=164
+SLURM_JOB_NODELIST=shavak-DIT400TR-55L
+SLURM_NNODES=1
+SLURMTMPDIR=
+working directory = /home/admin/dmtcp_examples/serial_test
+First 5 eigenvalues:
+-68.8143
+-68.3999
+-67.6637
+-67.246
+-66.841

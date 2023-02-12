@@ -1,0 +1,6 @@
+SLURM_JOBID=180
+SLURM_JOB_NODELIST=shavak-DIT400TR-55L
+SLURM_NNODES=1
+SLURMTMPDIR=
+working directory = /home/admin/dmtcp_examples/python_test
+Data dropped into vdp_data.h5

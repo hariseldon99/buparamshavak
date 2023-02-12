@@ -6,7 +6,7 @@
 
 int main(void) {
   // Set the size of the matrix
-  size_t N = 800;
+  size_t N = 1200;
 
   // Allocate memory for the matrix
   gsl_matrix *A = gsl_matrix_alloc(N, N);

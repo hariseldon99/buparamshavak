@@ -1,0 +1,5 @@
+SLURM_JOBID=171
+SLURM_JOB_NODELIST=shavak-DIT400TR-55L
+SLURM_NNODES=1
+SLURMTMPDIR=
+working directory = /home/admin/dmtcp_examples/openmp_test

@@ -1,11 +1,13 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
+import sys
 import h5py
 import matplotlib.pyplot as plt
 plt.rcParams['figure.figsize'] = (8,6)
 plt.rcParams['font.size'] = 20
 
-filename = 'vdp_data.h5'
+#filename = 'vdp_data.h5'
+filename = sys.argv[1]
 plot_filename = "vdp_phaseplots.png"
 hf = h5py.File(filename, 'r')
 

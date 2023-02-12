@@ -1,0 +1,437 @@
+[293655] mtcp_restart.c:347 restore_brk:
+  error: new/current break (0x11213000) != saved break (0x56026aac9000)
+[293676] mtcp_restart.c:347 restore_brk:
+  error: new/current break (0x11213000) != saved break (0x56026ac6a000)
+[293678] [mtcp_restart.c293675:] 347mtcp_restart.c :restore_brk347:
+   error: new/current break (restore_brk0x11213000:
+  ) != saved break (error: new/current break (0x56026ac700000x11213000)
+) != saved break (0x56026acf3000)
+[293677] mtcp_restart.c:347 restore_brk:
+  error: new/current break (0x11213000) != saved break (0x56026acd3000)
+[293679] mtcp_restart.c:347 restore_brk:
+  error: new/current break (0x11213000) != saved break (0x56026af75000)
+[2023-02-12T19:28:44.281, 44000, 44002, WARNING] at fileconnlist.cpp:361 in resume; REASON='JWARNING(unlink(missingUnlinkedShmFiles[i].name) != -1) failed'
+     missingUnlinkedShmFiles[i].name = /dev/shm/1Xd7xz
+     (strerror((*__errno_location ()))) = No such file or directory
+Message: The file was unlinked at the time of checkpoint. Unlinking it after restart failed
+[2023-02-12T19:28:44.281, 40000, 40002, WARNING] at fileconnlist.cpp:361 in resume; REASON='JWARNING(unlink(missingUnlinkedShmFiles[i].name) != -1) failed'
+     missingUnlinkedShmFiles[i].name = /dev/shm/1Xd7xz
+     (strerror((*__errno_location ()))) = No such file or directory
+Message: The file was unlinked at the time of checkpoint. Unlinking it after restart failed
+[2023-02-12T19:28:44.281, 44000, 44002, WARNING] at fileconnlist.cpp:361 in resume; REASON='JWARNING(unlink(missingUnlinkedShmFiles[i].name) != -1) failed'
+     missingUnlinkedShmFiles[i].name = /dev/shm/rgl7xz
+     (strerror((*__errno_location ()))) = No such file or directory
+Message: The file was unlinked at the time of checkpoint. Unlinking it after restart failed
+[2023-02-12T19:28:44.281, 40000, 40002, WARNING] at fileconnlist.cpp:361 in resume; REASON='JWARNING(unlink(missingUnlinkedShmFiles[i].name) != -1) failed'
+     missingUnlinkedShmFiles[i].name = /dev/shm/rgl7xz
+     (strerror((*__errno_location ()))) = No such file or directory
+Message: The file was unlinked at the time of checkpoint. Unlinking it after restart failed
+[2023-02-12T19:28:44.281, 44000, 44002, WARNING] at fileconnlist.cpp:361 in resume; REASON='JWARNING(unlink(missingUnlinkedShmFiles[i].name) != -1) failed'
+     missingUnlinkedShmFiles[i].name = /dev/shm/zc2qHx
+     (strerror((*__errno_location ()))) = No such file or directory
+Message: The file was unlinked at the time of checkpoint. Unlinking it after restart failed
+[2023-02-12T19:28:44.281, 40000, 40002, WARNING] at fileconnlist.cpp:361 in resume; REASON='JWARNING(unlink(missingUnlinkedShmFiles[i].name) != -1) failed'
+     missingUnlinkedShmFiles[i].name = /dev/shm/zc2qHx
+     (strerror((*__errno_location ()))) = No such file or directory
+Message: The file was unlinked at the time of checkpoint. Unlinking it after restart failed
+[2023-02-12T19:28:44.281, 44000, 44002, WARNING] at fileconnlist.cpp:361 in resume; REASON='JWARNING(unlink(missingUnlinkedShmFiles[i].name) != -1) failed'
+     missingUnlinkedShmFiles[i].name = /dev/shm/kr3Dgy
+     (strerror((*__errno_location ()))) = No such file or directory
+Message: The file was unlinked at the time of checkpoint. Unlinking it after restart failed
+[2023-02-12T19:28:44.281, 40000, 40002, WARNING] at fileconnlist.cpp:361 in resume; REASON='JWARNING(unlink(missingUnlinkedShmFiles[i].name) != -1) failed'
+     missingUnlinkedShmFiles[i].name = /dev/shm/kr3Dgy
+     (strerror((*__errno_location ()))) = No such file or directory
+Message: The file was unlinked at the time of checkpoint. Unlinking it after restart failed
+[2023-02-12T19:28:44.281, 44000, 44002, WARNING] at fileconnlist.cpp:361 in resume; REASON='JWARNING(unlink(missingUnlinkedShmFiles[i].name) != -1) failed'
+     missingUnlinkedShmFiles[i].name = /dev/shm/xdZ6Hy
+     (strerror((*__errno_location ()))) = No such file or directory
+Message: The file was unlinked at the time of checkpoint. Unlinking it after restart failed
+[2023-02-12T19:28:44.281, 40000, 40002, WARNING] at fileconnlist.cpp:361 in resume; REASON='JWARNING(unlink(missingUnlinkedShmFiles[i].name) != -1) failed'
+     missingUnlinkedShmFiles[i].name = /dev/shm/xdZ6Hy
+     (strerror((*__errno_location ()))) = No such file or directory
+Message: The file was unlinked at the time of checkpoint. Unlinking it after restart failed
+[2023-02-12T19:28:44.281, 45000, 45002, WARNING] at fileconnlist.cpp:361 in resume; REASON='JWARNING(unlink(missingUnlinkedShmFiles[i].name) != -1) failed'
+     missingUnlinkedShmFiles[i].name = /dev/shm/1Xd7xz
+     (strerror((*__errno_location ()))) = No such file or directory
+Message: The file was unlinked at the time of checkpoint. Unlinking it after restart failed
+[2023-02-12T19:28:44.281, 45000, 45002, WARNING] at fileconnlist.cpp:361 in resume; REASON='JWARNING(unlink(missingUnlinkedShmFiles[i].name) != -1) failed'
+     missingUnlinkedShmFiles[i].name = /dev/shm/rgl7xz
+     (strerror((*__errno_location ()))) = No such file or directory
+Message: The file was unlinked at the time of checkpoint. Unlinking it after restart failed
+[2023-02-12T19:28:44.281, 45000, 45002, WARNING] at fileconnlist.cpp:361 in resume; REASON='JWARNING(unlink(missingUnlinkedShmFiles[i].name) != -1) failed'
+     missingUnlinkedShmFiles[i].name = /dev/shm/zc2qHx
+     (strerror((*__errno_location ()))) = No such file or directory
+Message: The file was unlinked at the time of checkpoint. Unlinking it after restart failed
+[2023-02-12T19:28:44.281, 42000, 42002, WARNING] at fileconnlist.cpp:361 in resume; REASON='JWARNING(unlink(missingUnlinkedShmFiles[i].name) != -1) failed'
+     missingUnlinkedShmFiles[i].name = /dev/shm/1Xd7xz
+     (strerror((*__errno_location ()))) = No such file or directory
+Message: The file was unlinked at the time of checkpoint. Unlinking it after restart failed
+[2023-02-12T19:28:44.281, 45000, 45002, WARNING] at fileconnlist.cpp:361 in resume; REASON='JWARNING(unlink(missingUnlinkedShmFiles[i].name) != -1) failed'
+     missingUnlinkedShmFiles[i].name = /dev/shm/kr3Dgy
+     (strerror((*__errno_location ()))) = No such file or directory
+Message: The file was unlinked at the time of checkpoint. Unlinking it after restart failed
+[2023-02-12T19:28:44.281, 42000, 42002, WARNING] at fileconnlist.cpp:361 in resume; REASON='JWARNING(unlink(missingUnlinkedShmFiles[i].name) != -1) failed'
+     missingUnlinkedShmFiles[i].name = /dev/shm/rgl7xz
+     (strerror((*__errno_location ()))) = No such file or directory
+Message: The file was unlinked at the time of checkpoint. Unlinking it after restart failed
+[2023-02-12T19:28:44.281, 45000, 45002, WARNING] at fileconnlist.cpp:361 in resume; REASON='JWARNING(unlink(missingUnlinkedShmFiles[i].name) != -1) failed'
+     missingUnlinkedShmFiles[i].name = /dev/shm/xdZ6Hy
+     (strerror((*__errno_location ()))) = No such file or directory
+Message: The file was unlinked at the time of checkpoint. Unlinking it after restart failed
+[2023-02-12T19:28:44.281, 42000, 42002, WARNING] at fileconnlist.cpp:361 in resume; REASON='JWARNING(unlink(missingUnlinkedShmFiles[i].name) != -1) failed'
+     missingUnlinkedShmFiles[i].name = /dev/shm/zc2qHx
+     (strerror((*__errno_location ()))) = No such file or directory
+Message: The file was unlinked at the time of checkpoint. Unlinking it after restart failed
+[2023-02-12T19:28:44.281, 42000, 42002, WARNING] at fileconnlist.cpp:361 in resume; REASON='JWARNING(unlink(missingUnlinkedShmFiles[i].name) != -1) failed'
+     missingUnlinkedShmFiles[i].name = /dev/shm/kr3Dgy
+     (strerror((*__errno_location ()))) = No such file or directory
+Message: The file was unlinked at the time of checkpoint. Unlinking it after restart failed
+[2023-02-12T19:28:44.281, 42000, 42002, WARNING] at fileconnlist.cpp:361 in resume; REASON='JWARNING(unlink(missingUnlinkedShmFiles[i].name) != -1) failed'
+     missingUnlinkedShmFiles[i].name = /dev/shm/xdZ6Hy
+     (strerror((*__errno_location ()))) = No such file or directory
+Message: The file was unlinked at the time of checkpoint. Unlinking it after restart failed
+[2023-02-12T19:28:44.281, 43000, 43002, WARNING] at fileconnlist.cpp:361 in resume; REASON='JWARNING(unlink(missingUnlinkedShmFiles[i].name) != -1) failed'
+     missingUnlinkedShmFiles[i].name = /dev/shm/1Xd7xz
+     (strerror((*__errno_location ()))) = No such file or directory
+Message: The file was unlinked at the time of checkpoint. Unlinking it after restart failed
+[2023-02-12T19:28:44.281, 43000, 43002, WARNING] at fileconnlist.cpp:361 in resume; REASON='JWARNING(unlink(missingUnlinkedShmFiles[i].name) != -1) failed'
+     missingUnlinkedShmFiles[i].name = /dev/shm/rgl7xz
+     (strerror((*__errno_location ()))) = No such file or directory
+Message: The file was unlinked at the time of checkpoint. Unlinking it after restart failed
+[2023-02-12T19:28:44.281, 43000, 43002, WARNING] at fileconnlist.cpp:361 in resume; REASON='JWARNING(unlink(missingUnlinkedShmFiles[i].name) != -1) failed'
+     missingUnlinkedShmFiles[i].name = /dev/shm/zc2qHx
+     (strerror((*__errno_location ()))) = No such file or directory
+Message: The file was unlinked at the time of checkpoint. Unlinking it after restart failed
+[2023-02-12T19:28:44.281, 43000, 43002, WARNING] at fileconnlist.cpp:361 in resume; REASON='JWARNING(unlink(missingUnlinkedShmFiles[i].name) != -1) failed'
+     missingUnlinkedShmFiles[i].name = /dev/shm/kr3Dgy
+     (strerror((*__errno_location ()))) = No such file or directory
+Message: The file was unlinked at the time of checkpoint. Unlinking it after restart failed
+[2023-02-12T19:28:44.281, 43000, 43002, WARNING] at fileconnlist.cpp:361 in resume; REASON='JWARNING(unlink(missingUnlinkedShmFiles[i].name) != -1) failed'
+     missingUnlinkedShmFiles[i].name = /dev/shm/xdZ6Hy
+     (strerror((*__errno_location ()))) = No such file or directory
+Message: The file was unlinked at the time of checkpoint. Unlinking it after restart failed
+ 33%|███▎      | 1/3 [00:38<01:16, 38.37s/it][2023-02-12T19:28:51.043, 41000, 41000, NOTE] at fileconnection.h:95 in FileConnection; REASON='*****'
+     _path = /dev/null
+[2023-02-12T19:28:51.050, 42000, 42000, NOTE] at fileconnection.h:95 in FileConnection; REASON='*****'
+     _path = /dev/null
+[2023-02-12T19:28:51.053, 43000, 43000, NOTE] at fileconnection.h:95 in FileConnection; REASON='*****'
+     _path = /dev/null
+[2023-02-12T19:28:51.057, 44000, 44000, NOTE] at fileconnection.h:95 in FileConnection; REASON='*****'
+     _path = /dev/null
+[2023-02-12T19:28:51.061, 45000, 45000, NOTE] at fileconnection.h:95 in FileConnection; REASON='*****'
+     _path = /dev/null
+[2023-02-12T19:28:51.064, 41000, 41000, WARNING] at dlwrappers.cpp:76 in dlopen; REASON='JWARNING(ret) failed'
+     filename = /usr/local/condaenv/bin/../lib/libtbbmalloc.so.2
+     flag = 1
+Message: dlopen failed!
+You may also see a message 'ERROR: ld.so:'
+ from libdl.so.
+If this happens only under DMTCP, then consider setting the 
+environment variable 'DMTCP_DL_PLUGIN' to "0" before 
+'dmtcp_launch'.
+If the problem persists, please write to the DMTCP developers.
+
+[2023-02-12T19:28:51.065, 41000, 41000, WARNING] at dlwrappers.cpp:76 in dlopen; REASON='JWARNING(ret) failed'
+     filename = libmemkind.so
+     flag = 1
+Message: dlopen failed!
+You may also see a message 'ERROR: ld.so:'
+ from libdl.so.
+If this happens only under DMTCP, then consider setting the 
+environment variable 'DMTCP_DL_PLUGIN' to "0" before 
+'dmtcp_launch'.
+If the problem persists, please write to the DMTCP developers.
+
+[2023-02-12T19:28:51.065, 41000, 41000, NOTE] at fileconnection.h:95 in FileConnection; REASON='*****'
+     _path = /proc/meminfo
+[2023-02-12T19:28:51.065, 41000, 41000, NOTE] at fileconnection.h:95 in FileConnection; REASON='*****'
+     _path = /proc/sys/vm/nr_hugepages
+[2023-02-12T19:28:51.065, 41000, 41000, NOTE] at fileconnection.h:95 in FileConnection; REASON='*****'
+     _path = /sys/kernel/mm/transparent_hugepage/enabled
+[2023-02-12T19:28:51.065, 42000, 42000, WARNING] at dlwrappers.cpp:76 in dlopen; REASON='JWARNING(ret) failed'
+     filename = /usr/local/condaenv/bin/../lib/libtbbmalloc.so.2
+     flag = 1
+Message: dlopen failed!
+You may also see a message 'ERROR: ld.so:'
+ from libdl.so.
+If this happens only under DMTCP, then consider setting the 
+environment variable 'DMTCP_DL_PLUGIN' to "0" before 
+'dmtcp_launch'.
+If the problem persists, please write to the DMTCP developers.
+
+[2023-02-12T19:28:51.066, 42000, 42000, WARNING] at dlwrappers.cpp:76 in dlopen; REASON='JWARNING(ret) failed'
+     filename = libmemkind.so
+     flag = 1
+Message: dlopen failed!
+You may also see a message 'ERROR: ld.so:'
+ from libdl.so.
+If this happens only under DMTCP, then consider setting the 
+environment variable 'DMTCP_DL_PLUGIN' to "0" before 
+'dmtcp_launch'.
+If the problem persists, please write to the DMTCP developers.
+
+[2023-02-12T19:28:51.066, 42000, 42000, NOTE] at fileconnection.h:95 in FileConnection; REASON='*****'
+     _path = /proc/meminfo
+[2023-02-12T19:28:51.066, 43000, 43000, WARNING] at dlwrappers.cpp:76 in dlopen; REASON='JWARNING(ret) failed'
+     filename = /usr/local/condaenv/bin/../lib/libtbbmalloc.so.2
+     flag = 1
+Message: dlopen failed!
+You may also see a message 'ERROR: ld.so:'
+ from libdl.so.
+If this happens only under DMTCP, then consider setting the 
+environment variable 'DMTCP_DL_PLUGIN' to "0" before 
+'dmtcp_launch'.
+If the problem persists, please write to the DMTCP developers.
+
+[2023-02-12T19:28:51.066, 42000, 42000, NOTE] at fileconnection.h:95 in FileConnection; REASON='*****'
+     _path = /proc/sys/vm/nr_hugepages
+[2023-02-12T19:28:51.066, 42000, 42000, NOTE] at fileconnection.h:95 in FileConnection; REASON='*****'
+     _path = /sys/kernel/mm/transparent_hugepage/enabled
+[2023-02-12T19:28:51.066, 43000, 43000, WARNING] at dlwrappers.cpp:76 in dlopen; REASON='JWARNING(ret) failed'
+     filename = libmemkind.so
+     flag = 1
+Message: dlopen failed!
+You may also see a message 'ERROR: ld.so:'
+ from libdl.so.
+If this happens only under DMTCP, then consider setting the 
+environment variable 'DMTCP_DL_PLUGIN' to "0" before 
+'dmtcp_launch'.
+If the problem persists, please write to the DMTCP developers.
+
+[2023-02-12T19:28:51.066, 43000, 43000, NOTE] at fileconnection.h:95 in FileConnection; REASON='*****'
+     _path = /proc/meminfo
+[2023-02-12T19:28:51.066, 43000, 43000, NOTE] at fileconnection.h:95 in FileConnection; REASON='*****'
+     _path = /proc/sys/vm/nr_hugepages
+[2023-02-12T19:28:51.066, 43000, 43000, NOTE] at fileconnection.h:95 in FileConnection; REASON='*****'
+     _path = /sys/kernel/mm/transparent_hugepage/enabled
+[2023-02-12T19:28:51.068, 45000, 45000, WARNING] at dlwrappers.cpp:76 in dlopen; REASON='JWARNING(ret) failed'
+     filename = /usr/local/condaenv/bin/../lib/libtbbmalloc.so.2
+     flag = 1
+Message: dlopen failed!
+You may also see a message 'ERROR: ld.so:'
+ from libdl.so.
+If this happens only under DMTCP, then consider setting the 
+environment variable 'DMTCP_DL_PLUGIN' to "0" before 
+'dmtcp_launch'.
+If the problem persists, please write to the DMTCP developers.
+
+[2023-02-12T19:28:51.068, 44000, 44000, WARNING] at dlwrappers.cpp:76 in dlopen; REASON='JWARNING(ret) failed'
+     filename = /usr/local/condaenv/bin/../lib/libtbbmalloc.so.2
+     flag = 1
+Message: dlopen failed!
+You may also see a message 'ERROR: ld.so:'
+ from libdl.so.
+If this happens only under DMTCP, then consider setting the 
+environment variable 'DMTCP_DL_PLUGIN' to "0" before 
+'dmtcp_launch'.
+If the problem persists, please write to the DMTCP developers.
+
+[2023-02-12T19:28:51.069, 45000, 45000, WARNING] at dlwrappers.cpp:76 in dlopen; REASON='JWARNING(ret) failed'
+     filename = libmemkind.so
+     flag = 1
+Message: dlopen failed!
+You may also see a message 'ERROR: ld.so:'
+ from libdl.so.
+If this happens only under DMTCP, then consider setting the 
+environment variable 'DMTCP_DL_PLUGIN' to "0" before 
+'dmtcp_launch'.
+If the problem persists, please write to the DMTCP developers.
+
+[2023-02-12T19:28:51.069, 44000, 44000, WARNING] at dlwrappers.cpp:76 in dlopen; REASON='JWARNING(ret) failed'
+     filename = libmemkind.so
+     flag = 1
+Message: dlopen failed!
+You may also see a message 'ERROR: ld.so:'
+ from libdl.so.
+If this happens only under DMTCP, then consider setting the 
+environment variable 'DMTCP_DL_PLUGIN' to "0" before 
+'dmtcp_launch'.
+If the problem persists, please write to the DMTCP developers.
+
+[2023-02-12T19:28:51.069, 45000, 45000, NOTE] at fileconnection.h:95 in FileConnection; REASON='*****'
+     _path = /proc/meminfo
+[2023-02-12T19:28:51.069, 44000, 44000, NOTE] at fileconnection.h:95 in FileConnection; REASON='*****'
+     _path = /proc/meminfo
+[2023-02-12T19:28:51.069, 45000, 45000, NOTE] at fileconnection.h:95 in FileConnection; REASON='*****'
+     _path = /proc/sys/vm/nr_hugepages
+[2023-02-12T19:28:51.069, 44000, 44000, NOTE] at fileconnection.h:95 in FileConnection; REASON='*****'
+     _path = /proc/sys/vm/nr_hugepages
+[2023-02-12T19:28:51.069, 45000, 45000, NOTE] at fileconnection.h:95 in FileConnection; REASON='*****'
+     _path = /sys/kernel/mm/transparent_hugepage/enabled
+[2023-02-12T19:28:51.069, 44000, 44000, NOTE] at fileconnection.h:95 in FileConnection; REASON='*****'
+     _path = /sys/kernel/mm/transparent_hugepage/enabled
+[2023-02-12T19:28:51.089, 41000, 41000, NOTE] at fileconnection.h:95 in FileConnection; REASON='*****'
+     _path = /proc/cpuinfo
+[2023-02-12T19:28:51.089, 45000, 45000, NOTE] at fileconnection.h:95 in FileConnection; REASON='*****'
+     _path = /proc/cpuinfo
+[2023-02-12T19:28:51.089, 43000, 43000, NOTE] at fileconnection.h:95 in FileConnection; REASON='*****'
+     _path = /proc/cpuinfo
+[2023-02-12T19:28:51.089, 44000, 44000, NOTE] at fileconnection.h:95 in FileConnection; REASON='*****'
+     _path = /proc/cpuinfo
+[2023-02-12T19:28:51.093, 42000, 42000, NOTE] at fileconnection.h:95 in FileConnection; REASON='*****'
+     _path = /proc/cpuinfo
+ 67%|██████▋   | 2/3 [00:40<00:16, 16.97s/it][2023-02-12T19:28:52.988, 46000, 46000, NOTE] at fileconnection.h:95 in FileConnection; REASON='*****'
+     _path = /dev/null
+[2023-02-12T19:28:52.991, 47000, 47000, NOTE] at fileconnection.h:95 in FileConnection; REASON='*****'
+     _path = /dev/null
+[2023-02-12T19:28:52.995, 48000, 48000, NOTE] at fileconnection.h:95 in FileConnection; REASON='*****'
+     _path = /dev/null
+[2023-02-12T19:28:52.998, 49000, 49000, NOTE] at fileconnection.h:95 in FileConnection; REASON='*****'
+     _path = /dev/null
+[2023-02-12T19:28:53.002, 50000, 50000, NOTE] at fileconnection.h:95 in FileConnection; REASON='*****'
+     _path = /dev/null
+[2023-02-12T19:28:53.006, 46000, 46000, WARNING] at dlwrappers.cpp:76 in dlopen; REASON='JWARNING(ret) failed'
+     filename = /usr/local/condaenv/bin/../lib/libtbbmalloc.so.2
+     flag = 1
+Message: dlopen failed!
+You may also see a message 'ERROR: ld.so:'
+ from libdl.so.
+If this happens only under DMTCP, then consider setting the 
+environment variable 'DMTCP_DL_PLUGIN' to "0" before 
+'dmtcp_launch'.
+If the problem persists, please write to the DMTCP developers.
+
+[2023-02-12T19:28:53.006, 47000, 47000, WARNING] at dlwrappers.cpp:76 in dlopen; REASON='JWARNING(ret) failed'
+     filename = /usr/local/condaenv/bin/../lib/libtbbmalloc.so.2
+     flag = 1
+Message: dlopen failed!
+You may also see a message 'ERROR: ld.so:'
+ from libdl.so.
+If this happens only under DMTCP, then consider setting the 
+environment variable 'DMTCP_DL_PLUGIN' to "0" before 
+'dmtcp_launch'.
+If the problem persists, please write to the DMTCP developers.
+
+[2023-02-12T19:28:53.006, 46000, 46000, WARNING] at dlwrappers.cpp:76 in dlopen; REASON='JWARNING(ret) failed'
+     filename = libmemkind.so
+     flag = 1
+Message: dlopen failed!
+You may also see a message 'ERROR: ld.so:'
+ from libdl.so.
+If this happens only under DMTCP, then consider setting the 
+environment variable 'DMTCP_DL_PLUGIN' to "0" before 
+'dmtcp_launch'.
+If the problem persists, please write to the DMTCP developers.
+
+[2023-02-12T19:28:53.006, 47000, 47000, WARNING] at dlwrappers.cpp:76 in dlopen; REASON='JWARNING(ret) failed'
+     filename = libmemkind.so
+     flag = 1
+Message: dlopen failed!
+You may also see a message 'ERROR: ld.so:'
+ from libdl.so.
+If this happens only under DMTCP, then consider setting the 
+environment variable 'DMTCP_DL_PLUGIN' to "0" before 
+'dmtcp_launch'.
+If the problem persists, please write to the DMTCP developers.
+
+[2023-02-12T19:28:53.006, 47000, 47000, NOTE] at fileconnection.h:95 in FileConnection; REASON='*****'
+     _path = /proc/meminfo
+[2023-02-12T19:28:53.006, 46000, 46000, NOTE] at fileconnection.h:95 in FileConnection; REASON='*****'
+     _path = /proc/meminfo
+[2023-02-12T19:28:53.006, 47000, 47000, NOTE] at fileconnection.h:95 in FileConnection; REASON='*****'
+     _path = /proc/sys/vm/nr_hugepages
+[2023-02-12T19:28:53.006, 46000, 46000, NOTE] at fileconnection.h:95 in FileConnection; REASON='*****'
+     _path = /proc/sys/vm/nr_hugepages
+[2023-02-12T19:28:53.006, 47000, 47000, NOTE] at fileconnection.h:95 in FileConnection; REASON='*****'
+     _path = /sys/kernel/mm/transparent_hugepage/enabled
+[2023-02-12T19:28:53.006, 46000, 46000, NOTE] at fileconnection.h:95 in FileConnection; REASON='*****'
+     _path = /sys/kernel/mm/transparent_hugepage/enabled
+[2023-02-12T19:28:53.008, 49000, 49000, WARNING] at dlwrappers.cpp:76 in dlopen; REASON='JWARNING(ret) failed'
+     filename = /usr/local/condaenv/bin/../lib/libtbbmalloc.so.2
+     flag = 1
+Message: dlopen failed!
+You may also see a message 'ERROR: ld.so:'
+ from libdl.so.
+If this happens only under DMTCP, then consider setting the 
+environment variable 'DMTCP_DL_PLUGIN' to "0" before 
+'dmtcp_launch'.
+If the problem persists, please write to the DMTCP developers.
+
+[2023-02-12T19:28:53.008, 49000, 49000, WARNING] at dlwrappers.cpp:76 in dlopen; REASON='JWARNING(ret) failed'
+     filename = libmemkind.so
+     flag = 1
+Message: dlopen failed!
+You may also see a message 'ERROR: ld.so:'
+ from libdl.so.
+If this happens only under DMTCP, then consider setting the 
+environment variable 'DMTCP_DL_PLUGIN' to "0" before 
+'dmtcp_launch'.
+If the problem persists, please write to the DMTCP developers.
+
+[2023-02-12T19:28:53.008, 49000, 49000, NOTE] at fileconnection.h:95 in FileConnection; REASON='*****'
+     _path = /proc/meminfo
+[2023-02-12T19:28:53.009, 49000, 49000, NOTE] at fileconnection.h:95 in FileConnection; REASON='*****'
+     _path = /proc/sys/vm/nr_hugepages
+[2023-02-12T19:28:53.009, 49000, 49000, NOTE] at fileconnection.h:95 in FileConnection; REASON='*****'
+     _path = /sys/kernel/mm/transparent_hugepage/enabled
+[2023-02-12T19:28:53.009, 48000, 48000, WARNING] at dlwrappers.cpp:76 in dlopen; REASON='JWARNING(ret) failed'
+     filename = /usr/local/condaenv/bin/../lib/libtbbmalloc.so.2
+     flag = 1
+Message: dlopen failed!
+You may also see a message 'ERROR: ld.so:'
+ from libdl.so.
+If this happens only under DMTCP, then consider setting the 
+environment variable 'DMTCP_DL_PLUGIN' to "0" before 
+'dmtcp_launch'.
+If the problem persists, please write to the DMTCP developers.
+
+[2023-02-12T19:28:53.009, 50000, 50000, WARNING] at dlwrappers.cpp:76 in dlopen; REASON='JWARNING(ret) failed'
+     filename = /usr/local/condaenv/bin/../lib/libtbbmalloc.so.2
+     flag = 1
+Message: dlopen failed!
+You may also see a message 'ERROR: ld.so:'
+ from libdl.so.
+If this happens only under DMTCP, then consider setting the 
+environment variable 'DMTCP_DL_PLUGIN' to "0" before 
+'dmtcp_launch'.
+If the problem persists, please write to the DMTCP developers.
+
+[2023-02-12T19:28:53.009, 48000, 48000, WARNING] at dlwrappers.cpp:76 in dlopen; REASON='JWARNING(ret) failed'
+     filename = libmemkind.so
+     flag = 1
+Message: dlopen failed!
+You may also see a message 'ERROR: ld.so:'
+ from libdl.so.
+If this happens only under DMTCP, then consider setting the 
+environment variable 'DMTCP_DL_PLUGIN' to "0" before 
+'dmtcp_launch'.
+If the problem persists, please write to the DMTCP developers.
+
+[2023-02-12T19:28:53.009, 50000, 50000, WARNING] at dlwrappers.cpp:76 in dlopen; REASON='JWARNING(ret) failed'
+     filename = libmemkind.so
+     flag = 1
+Message: dlopen failed!
+You may also see a message 'ERROR: ld.so:'
+ from libdl.so.
+If this happens only under DMTCP, then consider setting the 
+environment variable 'DMTCP_DL_PLUGIN' to "0" before 
+'dmtcp_launch'.
+If the problem persists, please write to the DMTCP developers.
+
+[2023-02-12T19:28:53.009, 48000, 48000, NOTE] at fileconnection.h:95 in FileConnection; REASON='*****'
+     _path = /proc/meminfo
+[2023-02-12T19:28:53.009, 50000, 50000, NOTE] at fileconnection.h:95 in FileConnection; REASON='*****'
+     _path = /proc/meminfo
+[2023-02-12T19:28:53.009, 50000, 50000, NOTE] at fileconnection.h:95 in FileConnection; REASON='*****'
+     _path = /proc/sys/vm/nr_hugepages
+[2023-02-12T19:28:53.009, 48000, 48000, NOTE] at fileconnection.h:95 in FileConnection; REASON='*****'
+     _path = /proc/sys/vm/nr_hugepages
+[2023-02-12T19:28:53.009, 48000, 48000, NOTE] at fileconnection.h:95 in FileConnection; REASON='*****'
+     _path = /sys/kernel/mm/transparent_hugepage/enabled
+[2023-02-12T19:28:53.009, 50000, 50000, NOTE] at fileconnection.h:95 in FileConnection; REASON='*****'
+     _path = /sys/kernel/mm/transparent_hugepage/enabled
+[2023-02-12T19:28:53.011, 46000, 46000, NOTE] at fileconnection.h:95 in FileConnection; REASON='*****'
+     _path = /proc/cpuinfo
+[2023-02-12T19:28:53.029, 48000, 48000, NOTE] at fileconnection.h:95 in FileConnection; REASON='*****'
+     _path = /proc/cpuinfo
+[2023-02-12T19:28:53.029, 47000, 47000, NOTE] at fileconnection.h:95 in FileConnection; REASON='*****'
+     _path = /proc/cpuinfo
+[2023-02-12T19:28:53.033, 50000, 50000, NOTE] at fileconnection.h:95 in FileConnection; REASON='*****'
+     _path = /proc/cpuinfo
+[2023-02-12T19:28:53.033, 49000, 49000, NOTE] at fileconnection.h:95 in FileConnection; REASON='*****'
+     _path = /proc/cpuinfo
+[2023-02-12T19:28:54.101, 50000, 50002, WARNING] at procselfmaps.cpp:105 in ~ProcSelfMaps; REASON='JWARNING(numAllocExpands == jalib::JAllocDispatcher::numExpands()) failed'
+     numAllocExpands = 8
+     jalib::JAllocDispatcher::numExpands() = 9
+Message: JAlloc: memory expanded through call to mmap().  Inconsistent JAlloc will be a problem on restart
+100%|██████████| 3/3 [00:52<00:00, 14.66s/it]100%|██████████| 3/3 [00:52<00:00, 17.42s/it]

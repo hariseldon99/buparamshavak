@@ -1,0 +1,6 @@
+SLURM_JOBID=179
+SLURM_JOB_NODELIST=shavak-DIT400TR-55L
+SLURM_NNODES=1
+SLURMTMPDIR=
+working directory = /home/admin/dmtcp_examples/python_test
+Phase Space Plots for Van der Pol Oscillator:

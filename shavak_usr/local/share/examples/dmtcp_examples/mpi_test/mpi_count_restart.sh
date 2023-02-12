@@ -1,13 +1,13 @@
 #!/bin/bash
 # Put your SLURM options here
-#SBATCH -J myMPI          # Job Name
-#SBATCH -o myMPI.o%j      # Name of the output file (myMPI.oJobID)
-#SBATCH -p development    # Queue name
+#SBATCH -J MPI_count          # Job Name
+#SBATCH -o MPI_count.o%j      # Name of the output file (myMPI.oJobID)
+#SBATCH -n 5                  # Number of tasks
 #SBATCH --time=00:15:00           # put proper time of reservation here
-#SBATCH -n 4              # 4 tasks total
-#SBATCH -N 2              # run on 2 nodes
-#SBATCH -e myMPI.err%j    # Direct error to the error file
-#SBATCH -A TG-STA110019S  # Account number (replace with yours)
+#SBATCH -e MPI_count.err%j    # Direct error to the error file
+
+readonly RUNEXEC="./mpi_count"
+readonly CHKPT_INT=3
 
 
 #----------------------------- Set up DMTCP environment for a job ------------#
@@ -21,11 +21,6 @@
 # you just type "dmtcp_command.$JOBID <command>" and talk to the coordinator
 # for JOBID job.
 ###############################################################################
-
-#
-# Set as follows on Stampede:
-#
-export MV2_SMP_USE_CMA=0
 
 start_coordinator()
 {
@@ -101,30 +96,15 @@ cd $SLURM_SUBMIT_DIR
 #           **** IF USING Open MPI 1.8, SEE COMMENT BELOW ****
 # module load openmpi
 ###############################################################################
-# For Open MPI 1.8, if using InfiniBand, uncomment the following statement
-# export OMPI_MCA_mpi_leave_pinned=0
-# This could prevent a bug due to interaction with memalign() and ptmalloc2()
-# on restart.
-###############################################################################
 
-# export PATH=<dmtcp-install-path>/bin:$PATH
-# export LD_LIBRARY_PATH=<dmtcp-install-path>/lib:$LD_LIBRARY_PATH
 
 #------------------------------------- Launch application ---------------------#
-
-
-###############################################################################
-# If you use the Stampede supercomputer at Texas Advanced Computing Center
-# (TACC), add the following:
-HOSTFILE=hostfile
-echo "SLURM_JOB_NODELIST" | scontrol show hostname > $HOSTFILE
-###############################################################################
 
 ################################################################################
 # 1. Start DMTCP coordinator
 ################################################################################
 
-start_coordinator # -i 120 ... <put dmtcp coordinator options here>
+start_coordinator -i $CHKPT_INT #... <put dmtcp coordinator options here>
 
 
 ################################################################################
@@ -139,7 +119,4 @@ start_coordinator # -i 120 ... <put dmtcp coordinator options here>
 #      (TACC), use ibrun command to launch the application (--rm is not required):
 #        $ ibrun dmtcp_launch ./<app-binary> <app-options>
 ################################################################################
-
-#dmtcp_launch --rm mpirun --mca btl self,tcp ./<your binary>
-
-/bin/bash ./dmtcp_restart_script.sh -h $DMTCP_COORD_HOST -p $DMTCP_COORD_PORT --hostfile $HOSTFILE
+/bin/bash ./dmtcp_restart_script.sh -h $DMTCP_COORD_HOST -p $DMTCP_COORD_PORT

@@ -1,0 +1,5 @@
+Date:20230212
+
+MPI Jobs:
+Fails with errors as seen in stderr file.
+Most likely openmpi needs to be compiled with dmtcp.
