@@ -1,0 +1,3 @@
+To copy quota settings from user1 to user2:
+
+# edquota -p user1 user2

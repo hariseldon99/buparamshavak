@@ -1,0 +1,7 @@
+sudo scontrol create reservation starttime=09:00:00 duration=11:30:00 flags=daily account=shavak nodes=ALL ReservationName=daily_run
+
+Reservation Info:
+ReservationName=daily_run StartTime=2023-02-14T09:00:00 EndTime=2023-02-14T20:30:00 Duration=11:30:00
+   Nodes=shavak-DIT400TR-55L NodeCnt=1 CoreCnt=32 Features=(null) PartitionName=(null) Flags=DAILY,SPEC_NODES,ALL_NODES
+   TRES=cpu=64
+   Users=(null) Accounts=shavak Licenses=(null) State=INACTIVE BurstBuffer=(null) Watts=n/a
