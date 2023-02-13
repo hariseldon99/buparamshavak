@@ -124,5 +124,4 @@ dmypy.json
 .pyre/
 
 #Uncompressed tarballs
-hbict-1.0
 dmtcp-master
