@@ -1,5 +1,5 @@
 #!/bin/bash
-
+#SBATCH --reservation=daily_run
 #SBATCH --job-name=cupy-test
 #This sets the name of the job
 
@@ -15,7 +15,7 @@
 #SBATCH --cpus-per-task=1
 #This allocates the number of cpus per tasks. 
 
-#SBATCH --time=00:01:00 
+#SBATCH --time=11:59:00 
 #This allocates the walltime to 5 minutes. The program will not run for longer.
 
 #SBATCH --qos=normal 

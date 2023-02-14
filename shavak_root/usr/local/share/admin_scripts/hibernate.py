@@ -23,6 +23,7 @@ message = content + dt_string
 cmd_gui = '/usr/local/bin/notify-send-all -t 10 "Hibernating Now ..."'  
 #cmd_stopdwagent = '/usr/bin/systemctl is-active dwagent && /usr/bin/systemctl stop dwagent'
 cmd_tty = '/usr/bin/wall -t 10 "Hibernating Now ..."'
+cmd_lockscreen = 'dbus-send --type=method_call --dest=org.gnome.ScreenSaver /org/gnome/ScreenSaver org.gnome.ScreenSaver.Lock'
 cmd_hibernate = '/usr/bin/systemctl hibernate'
 
 async def telegram_send():
@@ -42,6 +43,7 @@ if __name__ == '__main__':
         os.system(cmd_tty)
         asyncio.run(telegram_send())
         time.sleep(10.0)
+        os.system(cmd_lockscreen)
         os.system(cmd_hibernate)
     except Exception:
         traceback.print_exc()

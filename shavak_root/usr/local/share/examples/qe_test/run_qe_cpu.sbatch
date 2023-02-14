@@ -1,4 +1,5 @@
 #!/bin/bash
+#SBATCH --reservation=daily_run
 
 #SBATCH --job-name=qetest_graphene
 #This sets the name of the job

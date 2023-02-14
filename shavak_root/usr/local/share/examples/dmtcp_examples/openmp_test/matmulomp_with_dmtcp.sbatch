@@ -1,6 +1,6 @@
 #!/bin/bash
+#SBATCH --reservation=daily_run
 # Put your SLURM options here
-#<--SBATCH --reservation=daily_run
 #SBATCH -J matmulOMP          # Job Name
 #SBATCH -o matmulOMP.o%j      # Name of the output file (myMPI.oJobID)
 #SBATCH -n 5                  # Number of tasks

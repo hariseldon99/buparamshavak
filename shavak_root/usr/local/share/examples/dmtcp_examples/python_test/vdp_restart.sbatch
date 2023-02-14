@@ -1,4 +1,5 @@
 #!/bin/bash
+#SBATCH --reservation=daily_run
 # Put your SLURM options here
 #SBATCH -J VDP          # Job Name
 #SBATCH -o VDP.o%j      # Name of the output file (myMPI.oJobID)

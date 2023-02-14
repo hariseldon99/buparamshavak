@@ -1,0 +1,12 @@
+Test Numpy Matrix Multiplication, size 50:
+Running over a loop of 10
+Fastest runtime per execution =  81.76319970516488  mus
+Test CuPy  Matrix Multiplication, size 50:
+Running over a loop of 10
+Fastest runtime per execution =  30.469500052277  mus
+Test Numpy Matrix Diagonalization, size 50:
+Running over a loop of 1
+Fastest runtime per execution =  151.52900596149266  mus
+Test Cupy Matrix Diagonalization, size 50:
+Running over a loop of 1
+Fastest runtime per execution =  888.4369890438393  mus

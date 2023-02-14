@@ -1,10 +1,5 @@
-      Name   Priority PreemptMode                Flags UsageFactor       MaxTRES MaxTRESPerNode     MaxWall MaxSubmit 
----------- ---------- ----------- -------------------- ----------- ------------- -------------- ----------- --------- 
-    normal          0     cluster DenyOnLimit,Require+    1.000000                       cpu=32    12:00:00       100 
-  elevated         10     cluster                         1.000000                                                    
-     nogpu          0     cluster                         1.000000    gres/gpu=0                                      
-      Name   Priority PreemptMode                Flags MaxSubmit       MaxTRES MaxTRESPerNode     MaxWall MaxJobsPU 
----------- ---------- ----------- -------------------- --------- ------------- -------------- ----------- --------- 
-    normal          0     cluster          DenyOnLimit         4                       cpu=16    12:00:00         1 
-  elevated         10     cluster                                                                                   
-     nogpu          0     cluster                                   gres/gpu=0                                      
+      Name   Priority                Flags MaxSubmit       MaxTRES MaxTRESPerNode     MaxWall MaxJobsPU 
+---------- ---------- -------------------- --------- ------------- -------------- ----------- --------- 
+    normal          0 DenyOnLimit,Require+         4                       cpu=32    12:00:00         4 
+  elevated         10                                                                                   
+     nogpu          0                                   gres/gpu=0                                      

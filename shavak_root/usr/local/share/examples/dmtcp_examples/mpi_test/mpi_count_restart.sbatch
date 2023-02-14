@@ -1,4 +1,5 @@
 #!/bin/bash
+#SBATCH --reservation=daily_run
 # Put your SLURM options here
 #SBATCH -J MPI_count          # Job Name
 #SBATCH -o MPI_count.o%j      # Name of the output file (myMPI.oJobID)
