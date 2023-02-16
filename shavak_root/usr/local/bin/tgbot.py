@@ -8,13 +8,12 @@ import sys, json, time
 botinfo_file="/usr/local/etc/telegrambot-scripts/botinfo.json"
 
 content_begin = '''
-# Broadcast Message
+# Broadcast Message:\n
 
 '''
 
 content_end='''
-
-* Date and Time: 
+\n* Date and Time: 
 '''
 
 now = datetime.now()

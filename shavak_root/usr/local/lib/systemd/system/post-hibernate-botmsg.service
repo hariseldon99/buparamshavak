@@ -1,7 +1,0 @@
-[Unit]
-Description=Telegram Bot Sends Resume From Hibernation Message
-After=hibernate.target network-online.target
-[Service]
-ExecStart=/usr/local/bin/post-hibernate-botmsg.py
-[Install]
-WantedBy=hibernate.target
