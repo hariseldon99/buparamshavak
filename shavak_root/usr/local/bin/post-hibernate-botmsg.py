@@ -8,9 +8,9 @@ import time, json
 botinfo_file="/usr/local/etc/telegrambot-scripts/botinfo.json"
 
 content = '''
-# Broadcast Message
+# Broadcast Message: Uptime Notice
 
-The Param Shavak DLGPU system is coming out of Hibernation Mode now.
+BUParamShavak system is coming out of Hibernation Mode now.
 
 * Date and Time: 
 '''
