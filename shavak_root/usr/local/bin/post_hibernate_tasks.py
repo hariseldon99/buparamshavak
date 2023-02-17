@@ -47,10 +47,10 @@ if __name__ == '__main__':
     try:
         time.sleep(10.0)
         asyncio.run(main())
-        #subprocess.call(cmd_slurm_resume, shell=True)
+        subprocess.call(cmd_slurm_resume, shell=True)
         #Bring up all SLURM partitions
-        #for partition in slurm_partitions:
-        #    undraincmd = f'scontrol update PartitionName={partition} State=UP'
-        #    os.system(undraincmd)
+        for partition in slurm_partitions:
+            undraincmd = f'scontrol update PartitionName={partition} State=UP'
+            os.system(undraincmd)
     except Exception:
         traceback.print_exc()

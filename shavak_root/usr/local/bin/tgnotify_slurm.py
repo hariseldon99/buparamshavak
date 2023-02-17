@@ -44,9 +44,7 @@ Remember to checkpoint jobs in future.
 now = datetime.now()
 dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
 
-cmd_gui = '/usr/local/bin/notify-send-all -t 10 "BUParamShavak will shutdown soon. Save your work and logout now!"'
 cmd_stopdwagent = '/usr/bin/systemctl is-active dwagent && /usr/bin/systemctl stop dwagent'
-cmd_tty = '/usr/bin/wall -t 10 "BUParamShavak will shutdown soon. Save your work and logout now!"'
 cmd_slurm_cancel = 'squeue -ho %A -t R| xargs -n 1 scancel'
 cmd_slurm_shutdown = 'scontrol shutdown'
 
@@ -66,8 +64,6 @@ if __name__ == '__main__':
 	try:
             if sys.argv[1] == 'shutdown':
                 #Announce Downtime
-                os.system(cmd_gui)
-                os.system(cmd_tty)
                 message = shutdown_msg_content + dt_string
                 asyncio.run(telegram_send(message))
                 time.sleep(10.0)

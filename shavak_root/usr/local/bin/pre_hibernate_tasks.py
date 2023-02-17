@@ -32,9 +32,6 @@ dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
 
 message = content + dt_string
 
-cmd_gui = '/usr/local/bin/notify-send-all -t 10 "BUParamShavak will hibernate soon. Save your work and logout now!"'  
-cmd_stopdwagent = '/usr/bin/systemctl is-active dwagent && /usr/bin/systemctl stop dwagent'
-cmd_tty = '/usr/bin/wall -t 10 "BUParamShavak will hibernate soon. Save your work and logout now!"'
 cmd_slurm_cancel = 'squeue -q normal -ho %A -t R| xargs -n 1 scancel'
 cmd_slurm_suspend = 'squeue -q elevated -ho %A -t R | xargs -n 1 scontrol suspend'
 
@@ -53,19 +50,16 @@ async def telegram_send():
 
 if __name__ == '__main__':
     try:
-        os.system(cmd_gui)
-        os.system(cmd_tty)
         asyncio.run(telegram_send())
-        time.sleep(20.0)
-        #subprocess.call(cmd_lockscreen, shell=True)
+        time.sleep(10.0)
         #Drain all SLURM partitions
-        #for partition in slurm_partitions:
-        #    draincmd = f'scontrol update PartitionName={partition} State=DRAIN'
-        #    os.system(draincmd)
+        for partition in slurm_partitions:
+            draincmd = f'scontrol update PartitionName={partition} State=DRAIN'
+            os.system(draincmd)
         #Cancel all jobs running in normal SLURM QoS
-        #subprocess.call(cmd_slurm_cancel, shell=True)
+        subprocess.call(cmd_slurm_cancel, shell=True)
         #Suspend all jobs running in SLURM: 
-        #subprocess.call(cmd_slurm_suspend, shell=True)
-        #time.sleep(20.0)
+        subprocess.call(cmd_slurm_suspend, shell=True)
+        time.sleep(10.0)
     except Exception:
         traceback.print_exc()
