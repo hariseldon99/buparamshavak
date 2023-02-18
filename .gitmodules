@@ -7,3 +7,6 @@
 [submodule "slurm_showq"]
 	path = slurm_showq
 	url = https://github.com/fasrc/slurm_showq
+[submodule "slurm-docker-cluster"]
+	path = slurm-docker-cluster
+	url = https://github.com/giovtorres/slurm-docker-cluster
