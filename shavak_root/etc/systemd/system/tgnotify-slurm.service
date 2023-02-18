@@ -1,6 +1,7 @@
 [Unit]
 Description=Telegram Notification and SLURM setup at Startup and Shutdown
 DefaultDependencies=no
+Before=shutdown.target reboot.target halt.target poweroff.target
 After=network-online.target
 Wants=network-online.target
 

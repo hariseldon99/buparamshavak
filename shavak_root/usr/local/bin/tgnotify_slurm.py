@@ -66,7 +66,7 @@ if __name__ == '__main__':
                 #Announce Downtime
                 message = shutdown_msg_content + dt_string
                 asyncio.run(telegram_send(message))
-                time.sleep(10.0)
+                #time.sleep(10.0)
 		
 		#Kill external logins
 		#os.system(cmd_stopdwagent)
