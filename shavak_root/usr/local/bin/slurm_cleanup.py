@@ -2,7 +2,7 @@
 import sys, os, subprocess
 import traceback
 
-slurm_partitions = ["CPU", "GPU"]
+slurm_partitions = ["normal"]
 slurm_qos = ["normal", "elevated"]
 
 def killall_extlogin():
@@ -20,16 +20,16 @@ def cancel_slurm_jobs(state="R", qos="normal"):
     return True
 
 def toggle_suspend_slurm_jobs(state="R", qos="elevated", action="suspend"):
-    subprocess.call('squeue -q {qos} -ho %A -t {state} | xargs -n 1 scontrol {action}', shell=True)
+    subprocess.call(f'squeue -q {qos} -ho %A -t {state} | xargs -n 1 scontrol {action}', shell=True)
 
 def shutdown_slurm():
     '''Clean Shutdown of all SLURM daemons'''
-    subprocess.call('scontrol shutdown')
+    os.system('scontrol shutdown')
     return True
 
 
 def shutdown():
-    killall_extlogin()
+    #killall_extlogin()
     #Drain all SLURM partitions
     for p in slurm_partitions:
         toggle_slurm_state(p,"DRAIN")
