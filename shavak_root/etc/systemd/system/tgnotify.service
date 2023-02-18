@@ -1,0 +1,15 @@
+[Unit]
+Description=Telegram Notification at Startup
+DefaultDependencies=no
+Wants=network-online.target
+After=network.target network-online.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+User=root
+WorkingDirectory=/
+ExecStart=/usr/local/bin/tgnotify.py bootup
+
+[Install]
+WantedBy=multi-user.target

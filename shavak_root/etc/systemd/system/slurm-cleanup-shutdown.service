@@ -1,0 +1,13 @@
+[Unit]
+Description=Slurm Cleanup at Startup
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+User=root
+WorkingDirectory=/
+ExecStop=/usr/local/bin/slurm_cleanup.py shutdown
+
+[Install]
+WantedBy=multi-user.target

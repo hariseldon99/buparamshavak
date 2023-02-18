@@ -1,0 +1,13 @@
+[Unit]
+Description=Telegram Notification at Shutdown
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+User=root
+WorkingDirectory=/
+ExecStop=/usr/local/bin/tgnotify.py shutdown
+
+[Install]
+WantedBy=multi-user.target

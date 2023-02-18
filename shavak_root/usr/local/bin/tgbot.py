@@ -3,24 +3,19 @@ import traceback
 import asyncio
 import telegram
 from datetime import datetime
-import sys, json, time
+import sys, json
 
 botinfo_file="/usr/local/etc/telegrambot-scripts/botinfo.json"
+botinfo_file="/usr/local/etc/telegrambot-scripts/botinfo.json"
 
-content_begin = '''
-# Broadcast Message:\n
+hostname = "BUParamShavak"
+msg_title ="# Broadcast Message: \n"
 
-'''
-
-content_end='''
-\n* Date and Time: 
-'''
 
 now = datetime.now()
 dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
 
-
-async def main(message):
+async def telegram_send(message):
     f = open(botinfo_file)
     botinfo = json.load(f)
     api_key = botinfo["api_key"]
@@ -33,7 +28,7 @@ async def main(message):
 if __name__ == '__main__':
     try:
         content = sys.argv[1]
-        message = content_begin + content + content_end + dt_string
-        asyncio.run(main(message))
+        message = msg_title + content + dt_string
+        asyncio.run(telegram_send(message))
     except Exception:
         traceback.print_exc()
