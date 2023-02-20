@@ -28,21 +28,17 @@ bootup_content = '''
 '''
 
 pre_hibernate_content = '''
-1. Normal-QoS jobs: 
-   * Cancelled.
-2. Elevated-QoS jobs: 
+1. All running jobs: 
    * Suspend attempted.
    * Will attempt resume on restart.
-3. Queued jobs: 
+2. Queued jobs: 
    * Unaffected.\n
 '''
 
 post_hibernate_content = '''
-1. Normal-QoS jobs:
-   * Cancelled.
-2. Elevated-Qos jobs:
+1. All running jobs:
    * Likely resumed. 
-3. Queued jobs:
+2. Queued jobs:
    * Unaffected.\n
 '''
 

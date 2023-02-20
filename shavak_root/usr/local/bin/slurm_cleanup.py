@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 import sys, os, subprocess
-import traceback
+import time, traceback
 
-slurm_partitions = ["normal"]
+slurm_partitions = ["CPU", "GPU"]
 slurm_qos = ["normal", "elevated"]
 
 def killall_extlogin():
@@ -36,6 +36,8 @@ def shutdown():
     #Cancel all running jobs   
     for q in slurm_qos:
         cancel_slurm_jobs(qos=q)
+    time.sleep(60)    
+    #May conflict with systemd shutdown
     shutdown_slurm()
     return True
 
@@ -50,9 +52,11 @@ def pre_hibernate():
     for p in slurm_partitions:
         toggle_slurm_state(p,"DRAIN")
     #Cancel all jobs running in normal SLURM QoS
-    cancel_slurm_jobs()
+    #cancel_slurm_jobs()
+    #Suspend all jobs running in normal SLURM Qos
+    toggle_suspend_slurm_jobs(qos="normal")
     #Suspend all jobs running in elevated SLURM Qos 
-    toggle_suspend_slurm_jobs()
+    toggle_suspend_slurm_jobs(qos="elevated")
     
 def post_hibernate():
     #Resume all suspended jobs

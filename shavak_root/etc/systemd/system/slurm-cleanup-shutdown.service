@@ -1,5 +1,5 @@
 [Unit]
-Description=Slurm Cleanup at Startup
+Description=Slurm Cleanup at Shutdown
 Wants=network-online.target
 
 [Service]

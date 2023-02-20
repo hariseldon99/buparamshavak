@@ -1,5 +1,5 @@
       Name   Priority                Flags MaxSubmit       MaxTRES MaxTRESPerNode     MaxWall MaxJobsPU 
 ---------- ---------- -------------------- --------- ------------- -------------- ----------- --------- 
-    normal          0 DenyOnLimit,Require+         4                       cpu=32    12:00:00         4 
+    normal          0 DenyOnLimit                  4                       cpu=32    12:00:00         4 
   elevated         10                                                                                   
      nogpu          0                                   gres/gpu=0                                      
