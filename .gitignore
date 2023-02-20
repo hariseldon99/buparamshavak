@@ -125,3 +125,4 @@ dmypy.json
 
 #Uncompressed tarballs
 dmtcp-master
+pyslurm-19-05-0-patch
