@@ -1,10 +1,9 @@
 #!/usr/bin/env python
-import sys, os, subprocess
-import time, traceback
+import sys, os 
+import traceback
 import pyslurm
 
-#slurm_partitions = ["CPU", "GPU"]
-slurm_partitions = ["normal"]
+slurm_partitions = ["CPU", "GPU"]
 
 def get_alljobs():
     a = pyslurm.job()
@@ -90,7 +89,6 @@ def shutdown():
     
     suspended_jobids  = jobids_instate(jobs, "SUSPENDED")
     result = cancel_slurm_jobs(suspended_jobids)
-
     #DISABLED: result = shutdown_slurm()
     return result
 

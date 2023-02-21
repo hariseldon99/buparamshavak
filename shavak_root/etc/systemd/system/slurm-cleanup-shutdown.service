@@ -1,6 +1,7 @@
 [Unit]
 Description=Slurm Cleanup at Shutdown
-Wants=network-online.target
+Wants=network-online.target slurmctld.service slurmdbd.service slurmd.service
+After=network.target network-online.target slurmctld.service slurmdbd.service slurmd.service
 
 [Service]
 Type=oneshot
