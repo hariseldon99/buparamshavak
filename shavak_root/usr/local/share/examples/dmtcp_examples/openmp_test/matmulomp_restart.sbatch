@@ -1,5 +1,4 @@
 #!/bin/bash
-#SBATCH --reservation=daily_run
 # Put your SLURM options here
 #SBATCH -J matmulOMP          # Job Name
 #SBATCH -o matmulOMP.o%j      # Name of the output file (myMPI.oJobID)

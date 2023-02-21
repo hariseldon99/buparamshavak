@@ -1,5 +1,4 @@
 #!/bin/bash
-#SBATCH --reservation=daily_run
 #SBATCH --job-name=pythontest
 #This sets the name of the job
 

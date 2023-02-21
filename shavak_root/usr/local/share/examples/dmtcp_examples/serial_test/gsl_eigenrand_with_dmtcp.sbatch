@@ -1,5 +1,4 @@
 #!/bin/bash
-#SBATCH --reservation=daily_run
 # Put your SLURM options here
 #SBATCH -J GSL_eigenrand          # Job Name
 #SBATCH -o GSL_eigenrand.o%j      # Name of the output file (myMPI.oJobID)

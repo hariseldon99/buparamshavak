@@ -1,5 +1,4 @@
 #!/bin/bash
-#SBATCH --reservation=daily_run
 
 #SBATCH --job-name=hello_mpi
 #This sets the name of the job
