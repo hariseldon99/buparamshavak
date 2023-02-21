@@ -104,13 +104,13 @@ def pre_hibernate():
     jobs = get_alljobs()
     running_jobids = jobids_instate(jobs, "RUNNING")
     normal_jobids = jobids_inqos(jobs, "normal")
-    elevated_jobids = jobnids_inqos(jobs, "elevated")
+    elevated_jobids = jobids_inqos(jobs, "elevated")
 
     running_normal = list(set(running_jobids).intersection(normal_jobids))
     #DISABLED: result = cancel_slurm_jobs(running_normal)
     result = suspend_slurm_jobs(running_normal)
     
-    elevated_normal = list(set(running_jobids).intersection(elevated_jobids))
+    running_elevated = list(set(running_jobids).intersection(elevated_jobids))
     result = suspend_slurm_jobs(running_elevated)
     return result
     
