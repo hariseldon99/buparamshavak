@@ -3,7 +3,6 @@ import sys, os
 import traceback
 import pyslurm
 
-slurm_partitions = ["CPU", "GPU"]
 
 def get_alljobs():
     a = pyslurm.job()
@@ -28,13 +27,14 @@ def jobids_inqos(jobs, qos):
 def toggle_all_partitions(newstate="UP", reason="Uptime"):
     '''Down all SLURM partitions. All running and suspended jobs cancelled'''
     try:
+    	slurm_partitions = list(pyslurm.partition().get().keys())
         for p in slurm_partitions:
             part_dict = pyslurm.create_partition_dict()
             part_dict["Name"] = p
             part_dict["State"] = newstate
             part_dict["Reason"] = reason       
             a = pyslurm.slurm_update_partition(part_dict)    
-    except Exception as e:
+    except Exception:
         return False
     else:
         return True
