@@ -35,13 +35,18 @@ def toggle_all_partitions(newstate="UP", reason="Uptime"):
             part_dict["Reason"] = reason       
             a = pyslurm.slurm_update_partition(part_dict)    
     except Exception:
+        traceback.print_exc()
         return False
     else:
         return True
 
 def killall_extlogin():
     '''Kill all external logins'''
-    os.system('/usr/bin/systemctl is-active dwagent && /usr/bin/systemctl stop dwagent')
+    try:
+        os.system('/usr/bin/systemctl is-active dwagent && /usr/bin/systemctl stop dwagent')
+    except Exception:
+        traceback.print_exc()
+        return False
     return True
 
 def cancel_slurm_jobs(jobids):
@@ -49,6 +54,7 @@ def cancel_slurm_jobs(jobids):
         for id in jobids:
             rc = pyslurm.slurm_kill_job(id,9)
     except Exception:
+        traceback.print_exc()
         return False
     else:
         return True
@@ -59,6 +65,7 @@ def suspend_slurm_jobs(jobids):
             pyslurm.slurm_suspend(id)
         return True
     except Exception:
+        traceback.print_exc()
         return False   
 
 def resume_slurm_jobs(jobids):
@@ -67,6 +74,7 @@ def resume_slurm_jobs(jobids):
             pyslurm.slurm_resume(id)
         return True
     except Exception:
+        traceback.print_exc()
         return False  
 
 def shutdown_slurm():
@@ -74,6 +82,7 @@ def shutdown_slurm():
     try:
         pyslurm.slurm_shutdown()
     except Exception:
+        traceback.print_exc()
         return False
     else:
         return True
