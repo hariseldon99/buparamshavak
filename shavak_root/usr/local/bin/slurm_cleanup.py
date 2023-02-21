@@ -1,70 +1,127 @@
 #!/usr/bin/env python
 import sys, os, subprocess
 import time, traceback
+import pyslurm
 
-slurm_partitions = ["CPU", "GPU"]
-slurm_qos = ["normal", "elevated"]
+#slurm_partitions = ["CPU", "GPU"]
+slurm_partitions = ["normal"]
+
+def get_alljobs():
+    a = pyslurm.job()
+    return a
+
+def jobids_instate(jobs, state):
+    j = jobs.get()
+    if len(j) > 0:
+       jobids = jobs.find('job_state', state)
+    else:
+       jobids = None
+    return jobids
+
+def jobids_inqos(jobs, qos):
+    j = jobs.get()
+    if len(j) > 0:
+        jobids = jobs.find('qos', qos)
+    else:
+        jobids = None
+    return jobids
+
+def toggle_all_partitions(newstate="UP", reason="Uptime"):
+    '''Down all SLURM partitions. All running and suspended jobs cancelled'''
+    try:
+        for p in slurm_partitions:
+            part_dict = pyslurm.create_partition_dict()
+            part_dict["Name"] = p
+            part_dict["State"] = newstate
+            part_dict["Reason"] = reason       
+            a = pyslurm.slurm_update_partition(part_dict)    
+    except Exception as e:
+        return False
+    else:
+        return True
 
 def killall_extlogin():
     '''Kill all external logins'''
     os.system('/usr/bin/systemctl is-active dwagent && /usr/bin/systemctl stop dwagent')
     return True
 
-def toggle_slurm_state(partition, state):
-    cmd = f'scontrol update PartitionName={partition} State={state}'
-    os.system(cmd)
-    return True
+def cancel_slurm_jobs(jobids):
+    try:
+        for id in jobids:
+            rc = pyslurm.slurm_kill_job(id,9)
+    except Exception:
+        return False
+    else:
+        return True
 
-def cancel_slurm_jobs(state="R", qos="normal"):
-    subprocess.call(f'squeue -q {qos} -ho %A -t {state}| xargs -n 1 scancel', shell=True)
-    return True
+def suspend_slurm_jobs(jobids):
+    try:
+        for id in jobsids:
+            pyslurm.slurm_suspend(id)
+        return True
+    except Exception:
+        return False   
 
-def toggle_suspend_slurm_jobs(state="R", qos="elevated", action="suspend"):
-    subprocess.call(f'squeue -q {qos} -ho %A -t {state} | xargs -n 1 scontrol {action}', shell=True)
+def resume_slurm_jobs(jobids):
+    try:
+        for id in jobids:
+            pyslurm.slurm_resume(id)
+        return True
+    except Exception:
+        return False  
 
 def shutdown_slurm():
-    '''Clean Shutdown of all SLURM daemons'''
-    os.system('scontrol shutdown')
-    return True
-
+    '''Clean Shutdown of all SLURM daemons. May interfere with systemd shutdown'''
+    try:
+        pyslurm.slurm_shutdown()
+    except Exception:
+        return False
+    else:
+        return True
 
 def shutdown():
-    #killall_extlogin()
-    #Drain all SLURM partitions
-    for p in slurm_partitions:
-        toggle_slurm_state(p,"DRAIN")
-    #Cancel all running jobs   
-    for q in slurm_qos:
-        cancel_slurm_jobs(qos=q)
-    time.sleep(60)    
-    #May conflict with systemd shutdown
-    shutdown_slurm()
-    return True
+    #DISABLED: killall_extlogin()
+    result = toggle_all_partitions(newstate="DOWN", reason="Unsched. Downtime")
+    
+    jobs = get_alljobs()
+    
+    running_jobids = jobids_instate(jobs,"RUNNING")
+    result = cancel_slurm_jobs(running_jobids)
+    
+    suspended_jobids  = jobids_instate(jobs, "SUSPENDED")
+    result = cancel_slurm_jobs(suspended_jobids)
+
+    #DISABLED: result = shutdown_slurm()
+    return result
 
 def bootup():
-    #UnDrain all SLURM partitions
-    for p in slurm_partitions:
-        toggle_slurm_state(p,"UP")
-    return True
+    result = toggle_all_partitions()
+    return result
 
 def pre_hibernate():
-    #Drain all SLURM partitions
-    for p in slurm_partitions:
-        toggle_slurm_state(p,"DRAIN")
+    result = toggle_all_partitions(newstate="DOWN", reason="Sched. Downtime")
+    
+    jobs = get_alljobs()
+    running_jobids = jobids_instate(jobs, "RUNNING")
+    normal_jobids = jobids_inqos(jobs, "normal")
+    elevated_jobids = jobnids_inqos(jobs, "elevated")
+    
     #Cancel all jobs running in normal SLURM QoS
-    #cancel_slurm_jobs()
+    result = cancel_slurm_jobs(running_normal)
     #Suspend all jobs running in normal SLURM Qos
-    toggle_suspend_slurm_jobs(qos="normal")
+    result = suspend_slurm_jobs(running_normal)
     #Suspend all jobs running in elevated SLURM Qos 
-    toggle_suspend_slurm_jobs(qos="elevated")
+    result = suspend_slurm_jobs(running_qos)
+    return result
     
 def post_hibernate():
-    #Resume all suspended jobs
-    for q in slurm_qos:
-        toggle_suspend_slurm_jobs(state="S", qos=q, action="resume")
-    #UnDrain all SLURM partitions
-    for p in slurm_partitions:
-        toggle_slurm_state(p,"UP")
+    result = toggle_all_partitions()
+    
+    jobs = get_alljobs()
+    suspended_jobids = jobids_instate(jobs, "SUSPENDED")
+    result = resume_slurm_jobs(suspended_jobids)
+    
+    return result
         
 if __name__ == '__main__':
     try:
