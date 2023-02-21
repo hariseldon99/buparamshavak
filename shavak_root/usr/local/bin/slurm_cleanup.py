@@ -56,7 +56,7 @@ def cancel_slurm_jobs(jobids):
 
 def suspend_slurm_jobs(jobids):
     try:
-        for id in jobsids:
+        for id in jobids:
             pyslurm.slurm_suspend(id)
         return True
     except Exception:
@@ -105,13 +105,13 @@ def pre_hibernate():
     running_jobids = jobids_instate(jobs, "RUNNING")
     normal_jobids = jobids_inqos(jobs, "normal")
     elevated_jobids = jobnids_inqos(jobs, "elevated")
-    
-    #Cancel all jobs running in normal SLURM QoS
-    result = cancel_slurm_jobs(running_normal)
-    #Suspend all jobs running in normal SLURM Qos
+
+    running_normal = list(set(running_jobids).intersection(normal_jobids))
+    #DISABLED: result = cancel_slurm_jobs(running_normal)
     result = suspend_slurm_jobs(running_normal)
-    #Suspend all jobs running in elevated SLURM Qos 
-    result = suspend_slurm_jobs(running_qos)
+    
+    elevated_normal = list(set(running_jobids).intersection(elevated_jobids))
+    result = suspend_slurm_jobs(running_elevated)
     return result
     
 def post_hibernate():
