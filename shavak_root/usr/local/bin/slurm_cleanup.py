@@ -27,7 +27,7 @@ def jobids_inqos(jobs, qos):
 def toggle_all_partitions(newstate="UP", reason="Uptime"):
     '''Down all SLURM partitions. All running and suspended jobs cancelled'''
     try:
-    	slurm_partitions = list(pyslurm.partition().get().keys())
+        slurm_partitions = list(pyslurm.partition().get().keys())
         for p in slurm_partitions:
             part_dict = pyslurm.create_partition_dict()
             part_dict["Name"] = p
