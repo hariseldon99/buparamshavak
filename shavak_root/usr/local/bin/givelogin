@@ -1,0 +1,54 @@
+#!/usr/bin/python
+
+import libuser
+import os
+import pyslurm
+import time
+
+wait_time = 5
+#default_group = 'shavak'
+default_group = 'adm'
+
+print("--------- Initializing.")
+admin = libuser.admin()
+time.sleep(2)
+username = input("Enter new username:")
+
+print(f"--------- Adding new user {username} in {wait_time} seconds. Press Ctrl-C to abort.")
+time.sleep(wait_time)
+
+print(f"--------- Creating a new user ({username}).")
+new_user = admin.initUser(username)
+
+print("--------- Adding the user.")
+new_homedir = '/home/' + username
+new_user[libuser.HOMEDIRECTORY] = new_homedir
+print("Set home directory to " + new_user[libuser.HOMEDIRECTORY][0])
+admin.addUser(new_user)
+
+print("--------- Grepping for the user.")
+os.system(f"grep {username} /etc/passwd /etc/group /etc/shadow /etc/gshadow")
+
+try:
+	dir = new_user.get(libuser.HOMEDIRECTORY)
+	print("--------- Looking at user's directory.")
+	os.system("ls " + dir[0])
+except:
+	pass
+
+print(f"--------- Adding {username} to group: "+default_group)
+os.system(f'usermod -g {default_group} {username}')
+
+
+print(f"--------- Setting default text terminal to byobu.")
+os.system('sudo -H -u {newuser} bash -c "byobu-enable"') 
+
+
+print(f"--------- Adding the user to SLURM account")
+
+#...
+
+print("--------- Getting a list of all users.")
+users = admin.enumerateUsersFull()
+for user in users:
+	print("  User `" + user[libuser.USERNAME][0] + "' has uid ", user[libuser.UIDNUMBER][0])
