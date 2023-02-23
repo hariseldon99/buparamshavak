@@ -1,16 +1,13 @@
 #!/usr/bin/python
 
-import libuser
-import os
-#import pyslurm
-
+import sys,os
 import subprocess
 from time import sleep
 
 wait_time = 5
-#default_group = 'shavak'
-default_group = 'adm'
+default_group = 'shavak'
 default_passwd = 'p@$$word'
+accname = "shavak"
 
 # define the countdown func.
 def countdown(t):
@@ -32,44 +29,55 @@ def setPassword(userName:str, password:str):
     p = subprocess.Popen(["/usr/bin/passwd", "--expire", userName])
 
 if __name__ == '__main__':
-    print("--------- Initializing.")
-    admin = libuser.admin()
-    sleep(1)
-    username = input("Enter new username: ")
+    
+    if sys.argv[-1] == "--remove":
+        username = input("Enter user name to remove: ")
+        
+        print(f"--------- Deleting user {username} in {wait_time} seconds. Press Ctrl-C to abort.")
+        countdown(wait_time)
+        
+        print(f"--------- Deleting user ({username}) and home directory.")
+        os.system(f'deluser --remove-home {username}')
+        
+        print("--------- Grepping for the user.")
+        os.system(f"grep {username} /etc/passwd /etc/group /etc/shadow /etc/gshadow")
+        
+        print(f"--------- Removing {username} from all SLURM accounts")
+        os.system(f'sacctmgr -i delete user {username}')
+        print("---------- Finished.")
+    else:   
 
-    print(f"--------- Adding new user {username} in {wait_time} seconds. Press Ctrl-C to abort.")
-    countdown(wait_time)
+        username = input("Enter new username: ")
 
-    print(f"--------- Creating a new user ({username}).")
-    new_user = admin.initUser(username)
+        print(f"--------- Adding new user {username} in {wait_time} seconds. Press Ctrl-C to abort.")
+        countdown(wait_time)
 
-    print("--------- Adding the user.")
-    new_homedir = '/home/' + username
-    new_user[libuser.HOMEDIRECTORY] = new_homedir
-    print("Set home directory to " + new_user[libuser.HOMEDIRECTORY][0])
+        print(f"--------- Creating a new user ({username}).")
+        new_user = os.system(f'useradd -N -s /bin/bash -m {username}')
+        os.system(f'chmod 700 /home/{username}')
+        
+        print(f"--------- Enabling byobu for new user ({username}).")
+        os.system(f'su - {username} -c "byobu-enable"')
+        setPassword(username, default_passwd)
 
-    new_user[libuser.LOGINSHELL] = '/bin/bash'
-    print("Set login shell to " + new_user[libuser.LOGINSHELL][0])
+        print("--------- Grepping for the user.")
+        os.system(f"grep {username} /etc/passwd /etc/group /etc/shadow /etc/gshadow")
 
-    #Adds the user and sets the default password
-    admin.addUser(new_user)
-    setPassword(username, default_passwd)
+        try:
+            dir = f'/home/{username}'
+            print("--------- Looking at user's directory.")
+            os.system("ls " + dir)
+        except:
+            pass
 
-    print("--------- Grepping for the user.")
-    os.system(f"grep {username} /etc/passwd /etc/group /etc/shadow /etc/gshadow")
+        print(f"--------- Adding {username} to group: "+default_group)
+        os.system(f'usermod -g {default_group} {username}')
+    
+        print(f"--------- Setting default quotas for {username}")
+        os.system(f"edquota -p admin {username}")
+    
+        print(f"--------- Adding {username} to SLURM account {accname}")
+        os.system(f"sacctmgr add user {username} account={accname}")
+        
+        print("---------- Finished. ")
 
-    try:
-        dir = new_user.get(libuser.HOMEDIRECTORY)
-        print("--------- Looking at user's directory.")
-        os.system("ls " + dir[0])
-    except:
-        pass
-
-    print(f"--------- Adding {username} to group: "+default_group)
-    os.system(f'usermod -g {default_group} {username}')
-
-    print(f"--------- Adding the user to SLURM account")
-
-    #...
-
-    print("---------- Finished.")
