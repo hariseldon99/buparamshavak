@@ -10,3 +10,6 @@
 [submodule "slurm-docker-cluster"]
 	path = slurm-docker-cluster
 	url = https://github.com/giovtorres/slurm-docker-cluster
+[submodule "python-telegram-bot"]
+	path = python-telegram-bot
+	url = ./python-telegram-bot
