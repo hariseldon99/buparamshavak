@@ -1,0 +1,14 @@
+[Unit]
+Description=TelegramBot for goslmailer
+DefaultDependencies=no
+Wants=network-online.target
+After=network.target network-online.target
+
+[Service]
+Type=simple
+User=slurm
+WorkingDirectory=/
+ExecStart=/usr/local/bin/tgslurmbot
+
+[Install]
+WantedBy=multi-user.target
