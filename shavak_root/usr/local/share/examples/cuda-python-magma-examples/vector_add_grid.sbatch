@@ -1,4 +1,6 @@
-BATCH --job-name=vecadd
+#!/bin/bash
+
+#SBATCH --job-name=vecadd
 #This sets the name of the job
 
 #SBATCH --ntasks=1 
