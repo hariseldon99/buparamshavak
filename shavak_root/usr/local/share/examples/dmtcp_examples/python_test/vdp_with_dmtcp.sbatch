@@ -92,6 +92,8 @@ cd $SLURM_SUBMIT_DIR
 # and LD_LIBRARY_PATH.
 ###############################################################################
 source /usr/local/condaenv/bin/activate
+export MKL_NUM_THREADS=1
+export OMP_NUM_THREADS=${MKL_NUM_THREADS}
 
 #           **** IF USING Open MPI 1.8, SEE COMMENT BELOW ****
 # module load openmpi
@@ -120,3 +122,4 @@ start_coordinator -i $CHKPT_INT #... <put dmtcp coordinator options here>
 #        $ ibrun dmtcp_launch ./<app-binary> <app-options>
 ################################################################################
 dmtcp_launch python3 $RUNEXEC ${SLURM_NTASKS}
+conda deactivate

@@ -21,4 +21,7 @@
 #This sets the quality of service to 'normal'
 
 source /usr/local/condaenv/bin/activate
+export MKL_NUM_THREADS=1
+export OMP_NUM_THREADS=${MKL_NUM_THREADS}
 srun python3 ./cupy_test.py
+conda deactivate
