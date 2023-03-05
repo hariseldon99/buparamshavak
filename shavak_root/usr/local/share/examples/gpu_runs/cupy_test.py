@@ -41,13 +41,13 @@ if __name__ == '__main__':
     print("Running over a loop of %d" % (defnum))
     print("Fastest runtime per execution = ", min(o.repeat(number=defnum)) * 1e6 / defnum, " mus")
     
-    N = 50#00
+    N = 5000#00
     defnum = 1
 
-    print(f"Test Numpy Matrix Diagonalization, size {N}:")
-    o = Timer(setup=mysetup, stmt=f"eigvals_numpy({N})")
-    print("Running over a loop of %d" % (defnum))
-    print("Fastest runtime per execution = ", min(o.repeat(number=defnum)) * 1e6 / defnum, " mus")
+    #print(f"Test Numpy Matrix Diagonalization, size {N}:")
+    #o = Timer(setup=mysetup, stmt=f"eigvals_numpy({N})")
+    #print("Running over a loop of %d" % (defnum))
+    #print("Fastest runtime per execution = ", min(o.repeat(number=defnum)) * 1e6 / defnum, " mus")
 
     print(f"Test Cupy Matrix Diagonalization, size {N}:")
     o = Timer(setup=mysetup, stmt=f"eigvals_cupy({N})")

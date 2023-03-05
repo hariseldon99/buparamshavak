@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 from multiprocessing import Pool
+# The multiprocessing python module helps parallelize programs
+
 import sys
 
 """

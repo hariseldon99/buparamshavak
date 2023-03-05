@@ -14,6 +14,11 @@
 #SBATCH --qos=normal 
 #This sets the quality of service to 'normal'
 
+export MKL_NUM_THREADS=1
+export OMP_NUM_THREADS=${MKL_NUM_THREADS}
+#1. Anaconda's Intel Math Kernel library uses MKL_NUM_THREADS to set its parallel threads. 
+#2. Since our code is independently parallalized, setting this to one to avoid conflicts
+
 let nprocs=${SLURM_NTASKS}*${SLURM_CPUS_PER_TASK}
 source /usr/local/condaenv/bin/activate
 conda activate ~/.testenv
