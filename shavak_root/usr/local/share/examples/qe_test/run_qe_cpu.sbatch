@@ -7,10 +7,10 @@
 #This allocates the walltime to 5 minutes. The program will not run for longer.
 
 #SBATCH --ntasks=1
-#This sets the number of processes to 4. Change if needed
+#This sets the number of processes to 4. Adjust as necessary
 
-#SBATCH --cpus-per-task=1
-#This allocates the number of cpus per tasks. If the number of tasks is 4, and cpus per task is 1, then slurm will assign 4 X 1 = 4 cpus to the job
+#Quantum Espresso seems to ignore this setting,effectively setting this to one always
+#<-DISABLED--->SBATCH --cpus-per-task=1
 
 #SBATCH --partition=CPU
 #This now sets the partition to the CPU partition
