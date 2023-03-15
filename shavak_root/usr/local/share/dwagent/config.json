@@ -1,0 +1,8 @@
+{
+ "enabled": true,
+ "key": "PHAKE_KEY",
+ "listen_port": 7950,
+ "develop_mode": true,
+ "password": "PHAKE-PWD",
+ "url_primary": "https://www.dwservice.net/"
+}
