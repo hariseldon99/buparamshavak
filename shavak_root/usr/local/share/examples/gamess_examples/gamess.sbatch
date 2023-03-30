@@ -4,7 +4,10 @@
 #SBATCH --job-name=retinal-gamess
 # This sets the job name. Change if needed
 
-#SBATCH --ntasks=4
+#SBATCH --ntasks=1
+# This sets the number of openmp threads. Change if needed
+
+#SBATCH --cpus-per-task=4
 # This sets the number of processes. Change if needed
 
 #SBATCH --qos=normal 
@@ -15,7 +18,7 @@
 # The program will not run for longer.
 
 export infile="retinal.inp"
-export outfile="retinal_newway.log"
+export outfile="retinal_sockets_4.log"
 
 # There should be no need to edit below this line
 #---------------------------------------------------
@@ -29,14 +32,14 @@ cp $GMS_PATH/bin/my_ipcrm $HOME/bin/
 
 echo '---------------------------------------------------'
 echo "Beginning GAMESS RUN WITH:"
-echo "NPROCS = "${SLURM_NTASKS}
+echo "NPROCS = " `expr ${SLURM_NTASKS} \* ${SLURM_CPUS_PER_TASK}`
 echo '---------------------------------------------------'
 
 #Start time
 start=`date +%s.%N`
 
-srun rungms-dev ${infile} ${ver} >& ${outfile}
-#srun is essential for GAMESS. DO Not RUN WITHOUT srun.
+export OMP_NUM_THREADS=${SLURM_NTASKS}
+rungms-dev ${infile} ${ver} ${SLURM_CPUS_PER_TASK} >& ${outfile}
 
 #End time
 end=`date +%s.%N`
