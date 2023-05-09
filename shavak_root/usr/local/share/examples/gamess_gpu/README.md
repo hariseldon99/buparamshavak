@@ -5,7 +5,7 @@ The General Atomic and Molecular Electronic Structure Systems (GAMESS) program s
 
 This directory contains the gamess input files for formaldehyde. The file is named 'cc-h2co.inp' and its contents are:
 
-```json
+```php
 !   CC-SD(T) computation on H2CO...formaldehyde
 !   there are 4 atoms and 8 occupied MOs (4 are core)
 !   the cc-pVTZ basis has 208 AOs and 196 MOs.
@@ -114,7 +114,7 @@ The BUParamShavak cluster has a singularity image with GAMESS installed inside i
 
 When run properly, Any simulation will have the following standard output:
 
-```json
+```php
 $ [Running input $JOB on $NCPUS node(s) with $NGPUS gpu(s)]
 $ [Run completed]
 
@@ -122,7 +122,7 @@ $ [Run completed]
 
 The bulk of the output will be directed to the log file, not the standard output.
 
-# Steps
+## Steps
 
 The run-script assumes the file structure below for your own jobs:
 
@@ -155,6 +155,7 @@ The run-script assumes the file structure below for your own jobs:
     ```bash
     $sbatch gamess_gpu.sbatch
     ```
+
 
 ## Output
 
