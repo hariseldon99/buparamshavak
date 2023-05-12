@@ -1,0 +1,8 @@
+###########################################
+
+  running thermo_pw.x as: srun singularity run --nv -B /home/admin/qesif/thermo_pw/examples/example01:/host_pwd -B /usr/share/espresso/pseudo/:/pseudo --pwd /host_pwd /usr/local/share/singularity/images/qe/qe-7.1-thermopw-20230501.sif thermo_pw.x -ni 1
+
+  cleaning ./tmp...
+ done
+  running the thermo_pw calculation...
+ done

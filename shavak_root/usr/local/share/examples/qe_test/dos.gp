@@ -12,6 +12,6 @@ set format y "%.1f"
 set title "Total DOS\n( press <Enter> in the terminal to exit ... )"
 
 plot [:][:] \
-     'graphene.dos' u ($1-Efermi):2 notit w filledcurve lt 1, \
-     'graphene.dos' u ($1-Efermi):2 notit w l lt 1 lw 2
+     'Cobult.dos' u ($1-Efermi):2 notit w filledcurve lt 1, \
+     'Cobult.dos' u ($1-Efermi):2 notit w l lt 1 lw 2
 pause -1
