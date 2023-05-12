@@ -6,7 +6,6 @@
 #SBATCH --partition=GPU
 #This sets the partition to the GPU partition. Important for GPU jobs
 
-# <---DISABLED SBATCH --gres=mps:100
 #SBATCH --gres=gpu:1
 # This allocates 100% of 1 GPU as MPS. Important for GPU jobs
 # Choose either GRES or MPS for GPU Allocation
@@ -19,6 +18,92 @@
 
 #SBATCH --time=12:00:00 
 # This allocates the walltime to 12 hours. The program will not run for longer.
+
+#SBATCH --output=R-%x.%j.out
+#SBATCH --error=R-%x.%j.err
+
+export PSEUDO_DIR_HOST=./pseudo/
+export PSEUDO_DIR_IMG=/pseudo 
+export PSEUDO_LIST="C.pbe-n-rrkjus_psl.0.1.UPF"
+export TMP_DIR=./tmp
+# This sets pseudopotential and temporary files directories in the host
+
+cat > scf.in << EOF
+&CONTROL
+calculation   = 'scf'
+pseudo_dir    = '${PSEUDO_DIR_IMG}/',
+outdir        = '${TMP_DIR}/',
+prefix        = 'gr'
+/
+&SYSTEM
+ibrav         = 4
+a             = 2.4639055825
+c             = 15.0
+nat           = 2
+ntyp          = 1
+occupations   = 'smearing'
+smearing      = 'mv'
+degauss       = 0.020
+ecutwfc       = 40
+/
+&ELECTRONS
+mixing_beta   = 0.7
+conv_thr      = 1.0D-6
+/
+ATOMIC_SPECIES
+C 12.0107 ${PSEUDO_LIST}
+ATOMIC_POSITIONS (crystal)
+C  0.333333333  0.666666666  0.500000000
+C  0.666666666  0.333333333  0.500000000
+K_POINTS (automatic)
+12 12 1 0 0 0
+EOF
+
+cat > nscf.in << EOF
+&CONTROL
+calculation   = 'nscf'
+pseudo_dir    = '${PSEUDO_DIR_IMG}/',
+outdir        = '${TMP_DIR}/',
+prefix        = 'gr'
+/
+&SYSTEM
+ibrav         = 4
+a             = 2.4639055825
+c             = 15.0
+nat           = 2
+ntyp          = 1
+nbnd          = 16
+occupations   = 'tetrahedra'
+ecutwfc       = 40
+/
+&ELECTRONS
+mixing_beta   = 0.7
+conv_thr      = 1.0D-6
+/
+ATOMIC_SPECIES
+C 12.0107 ${PSEUDO_LIST}
+ATOMIC_POSITIONS (crystal)
+C  0.333333333  0.666666666  0.500000000
+C  0.666666666  0.333333333  0.500000000
+K_POINTS (automatic)
+48 48 1 0 0 0
+EOF
+
+cat > bands.in << EOF
+&BANDS
+ outdir  = './tmp/'
+ prefix  = 'gr'
+ filband = 'gr.bands'
+/
+EOF
+
+cat dos.in << EOF
+&DOS
+outdir = '${TMP_DIR}/',
+prefix = 'gr'
+fildos = 'gr.dos'
+/
+EOF
 
 # Avoid editing below this line unless absolutely necessary
 ########################################################################################
@@ -51,7 +136,7 @@ export OPAL_PKGINCLUDEDIR=${OPENMPI_HOME}/include/openmpi
 # singularity image to find the MPI installation
 # Necessary due to a bug in nvidia hpc sdk
 
-export SINGULARITY="singularity run --nv -B ${PWD}:/host_pwd --pwd /host_pwd ${QE_IMGDIR}/${QE_IMG}"
+export SINGULARITY="singularity run --nv -B ${PWD}:/host_pwd -B ${PSEUDO_DIR_HOST}:${PSEUDO_DIR_IMG} --pwd /host_pwd ${QE_IMGDIR}/${QE_IMG}"
 
 echo "###########################################"
 echo "SCF Calculation:"
