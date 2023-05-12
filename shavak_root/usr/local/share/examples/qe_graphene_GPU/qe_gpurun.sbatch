@@ -97,7 +97,7 @@ cat > bands.in << EOF
 /
 EOF
 
-cat dos.in << EOF
+cat > dos.in << EOF
 &DOS
 outdir = '${TMP_DIR}/',
 prefix = 'gr'
