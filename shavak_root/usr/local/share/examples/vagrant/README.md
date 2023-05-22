@@ -1,4 +1,4 @@
-# Starting a headless windows virtual machine with vagrant and Virtualbox
+# Headless Virtual Machine with Vagrant 
 
 ## Introduction
 Since BUParamShavak runs Ubuntu Linux as a base OS, running windows software will require a windows Virtual Machine (VM). Your VMs will be hosted in this on top of your base OS, sharing its resources. VirtualBox is an open source (GPL v2) virtualization platform that works on almost any base OS, and is installed on BUParamShavak. For advanced users, it also has some command line, advanced networking capabilities, and integrates nicely with Vagrant. Vagrant is a time-saving open source (MIT) tool that acts as a simple frontend to VMs. It allows for some fundamental integration and automation with platforms like VirtualBox, Microsoft Hyper-V, VMware, etc. In summary, this is a time-saving tool for standing up VMs faster, configuring them, adding packages to VMs, or integrating your virtual platforms.
