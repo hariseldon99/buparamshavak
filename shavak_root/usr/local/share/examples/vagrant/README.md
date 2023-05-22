@@ -104,7 +104,7 @@ Next time, you do not need to download the VM, since it was already downloaded a
 	```bash
 	localhost:3389
 	```
-	Then, press Enter. The RDP client will try to connect to the Windows VM, when prompted for credentials, enter the default username and password as shown below
+	Then, press Enter. The RDP client will try to connect to the Windows VM. When prompted for credentials, enter the default username and password as shown below
 	
 	```json
 	username: vagrant
