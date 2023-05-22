@@ -67,9 +67,9 @@ Next time, you do not need to download the VM, since it was already downloaded a
 	```
    	These entries fix the number of VM cpus and RAM in MB. Adjust these as per the recommendations above.	
 
-4. Save the exit Vagrantfile. Now, put all your install files and input data in $HOME/vagrant/data so that your VM has access to them.
+4. Save and exit Vagrantfile. Now, put all your install files and input data in $HOME/vagrant/data so that your VM has access to them.
 
-5. Now, start an interactive shell using SLURM. tell the grid engine to allocate the same number of cpus as you put in the 'vb.cpus' entry in Vagrantfile. In this example., it is 8.
+5. Now, start an interactive shell using SLURM. tell the grid engine to allocate the same number of cpus as you put in the 'vb.cpus' entry in Vagrantfile. In this example, it is 8.
 
 	```bash
 	srun --ntasks=8 --job-name=vagrant <ADDITIONAL SLURM OPTIONS, IF ANY> --pty bash
@@ -95,7 +95,7 @@ Next time, you do not need to download the VM, since it was already downloaded a
 	```bash
 	$remmina
 	```
-    	A window should open with the RDP client in it. On the top bar, select "RDP" for the access protocol, and enter the local ip address of BUParamShavak, followed by the port number of the RDP 		server. The local ip address is '127.0.0.1', and the port number is '3389', unless you've changed it in Vagrantfile. Enter it thus:
+	A window should open with the RDP client in it. On the top bar, select "RDP" for the access protocol, and enter the local ip address of BUParamShavak, followed by the port number of the RDP server. The local ip address is '127.0.0.1', and the port number is '3389', unless you've changed it in Vagrantfile. Enter it thus:
     
 	```bash
 	127.0.0.1:3389
