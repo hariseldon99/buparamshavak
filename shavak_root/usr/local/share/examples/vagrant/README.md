@@ -114,7 +114,7 @@ Next time, you do not need to download the VM, since it was already downloaded a
 	
 9. If all goes well, the RDP client should show you a windows desktop. Navigate to "C:\vagrant_data\" using either a PowerShell or Windows Explorer and install your software and run it as needed.
 	
-	**Note that**, while running any software, you can kill the RDP window. The Windows VM will continue to run in the background. To get back to it, simply start remmina from the interactive host shell and log into the VM again.
+	**Note that**, while running any software, you can kill the RDP window. The Windows VM will continue to run in the background. To get back to it, simply start remmina from the interactive host shell and log into the VM again. **However,** do not log off, or exit the interactive host shell, since doing so will kill the VM. You may lock your screen, if you wish.
 
 10. When you're finished, make sure that all output files and data are somewhere in "C:\vagrant_data\", then exit the RDP client by killing the window. To terminate the VM, simply go back to the interactive shell and enter the following command:
 
