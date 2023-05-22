@@ -31,7 +31,7 @@ Next time, you do not need to download the VM, since it was already downloaded a
 
 ## Instructions
 
-1. First, choose the number of processors that you will use, as well as the total memory. These should be elss than the amount allowed by the SLURM scheduler. Typically acceptable values are 4,8, or 16 cpus and 4GB (4096 MB), 8GB (8192 MB), or 16 GB (16384 MB) of RAM.
+1. First, choose the number of processors that you will use, as well as the total memory. These should be **less than** the amounts allowed by the SLURM scheduler. Typically, acceptable values are 4,8, or 16 cpus and 4GB (4096 MB), 8GB (8192 MB), or 16 GB (16384 MB) of RAM.
 
 1. A sample vagrant file and data directory can be found in $EXAMPLES/vagrant. Copy it over to your home directory with the command
 
@@ -61,7 +61,7 @@ Next time, you do not need to download the VM, since it was already downloaded a
 	
 	```json
 	config.vm.provider "virtualbox" do |vb|
-      		vb.cpus = "8"
+		vb.cpus = "8"
 		vb.memory = "8192"
   	end
 	```
