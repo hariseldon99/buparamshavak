@@ -75,9 +75,9 @@ This generalized script purges zombie configurations, identifies all current job
 `NODE_NAME=$(hostname)`  
 `echo "Target Node: ${NODE_NAME}"`
 
-`STRANDED_RUNNING=$(squeue -w "${NODE_NAME}" -t RUNNING -h -o "%i" 2>/dev/null || true)`  
+`STRANDED_JOBS=$(squeue -w "${NODE_NAME}" -t RUNNING,SUSPENDED -h -o "%i" 2>/dev/null || true)`  
 `HELD_LAUNCH_FAILED=$(squeue -w "${NODE_NAME}" -t PENDING -h -o "%i %r" 2>/dev/null | grep -i "launch" | awk '{print $1}' || true)`  
-`ALL_TARGET_JOBS=$(echo -e "${STRANDED_RUNNING}\n${HELD_LAUNCH_FAILED}" | tr ' ' '\n' | grep -E '^[0-9]+$' | sort -u || true)`
+`ALL_TARGET_JOBS=$(echo -e "${STRANDED_JOBS}\n${HELD_LAUNCH_FAILED}" | tr ' ' '\n' | grep -E '^[0-9]+$' | sort -u || true)`
 
 *`# 3. Cleanly wipe hanging child tasks, cgroups, and step execution environments`*  
 `echo "Purging lingering job processes and step execution environments..."`  
@@ -112,7 +112,8 @@ This generalized script purges zombie configurations, identifies all current job
 `sleep 1`  
 `systemctl start slurmd`  
 `sleep 2`  
-`scontrol update nodename="${NODE_NAME}" state=RESUME 2>/dev/null || true`
+`scontrol update nodename="${NODE_NAME}" state=RESUME 2>/dev/null || true`  
+`scontrol update PartitionName=ALL State=UP 2>/dev/null || true`
 
 *`# 6. Requeue and release stranded jobs now that the node is fully healthy`*  
 `if [ -n "${ALL_TARGET_JOBS}" ]; then`  
@@ -120,7 +121,7 @@ This generalized script purges zombie configurations, identifies all current job
     `echo "${ALL_TARGET_JOBS}" | xargs -r scontrol requeue 2>/dev/null || true`  
     `echo "${ALL_TARGET_JOBS}" | xargs -r scontrol release 2>/dev/null || true`  
 `else`  
-    `echo "No stranded running or held tasks detected on this node footprint."`  
+    `echo "No stranded running, suspended, or held tasks detected on this node footprint."`  
 `fi`
 
 `echo "=== Recovery Pipeline Successfully Completed ==="`
