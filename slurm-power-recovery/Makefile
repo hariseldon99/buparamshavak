@@ -10,14 +10,15 @@ endif
 all: src/slurm-power-recovery.service
 	@echo "Source compilation complete. Ready for target layout install."
 
-src/slurm-power-recovery.service: src/slurm-power-recovery.service.in
+src/slurm-power-recovery.service: src/slurm-power-recovery.service.in Makefile
 	sed 's|@LIBEXECDIR@|$(LIBEXECDIR)|g' $< > $@
 
-install: src/slurm-power-recovery.service
+install:
 	install -d $(DESTDIR)$(LIBEXECDIR)
 	install -m 0755 src/slurm-recovery-hook.sh $(DESTDIR)$(LIBEXECDIR)/slurm-recovery-hook.sh
 	install -d $(DESTDIR)$(SYSTEMD_UNIT_DIR)
-	install -m 0644 src/slurm-power-recovery.service $(DESTDIR)$(SYSTEMD_UNIT_DIR)/slurm-power-recovery.service
+	sed 's|@LIBEXECDIR@|$(LIBEXECDIR)|g' src/slurm-power-recovery.service.in > $(DESTDIR)$(SYSTEMD_UNIT_DIR)/slurm-power-recovery.service
+	chmod 0644 $(DESTDIR)$(SYSTEMD_UNIT_DIR)/slurm-power-recovery.service
 
 uninstall:
 	rm -f $(DESTDIR)$(LIBEXECDIR)/slurm-recovery-hook.sh
@@ -28,3 +29,4 @@ clean:
 	rm -f src/slurm-power-recovery.service
 
 .PHONY: all install uninstall clean
+
