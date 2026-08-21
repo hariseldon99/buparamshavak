@@ -71,22 +71,15 @@ This generalized script purges zombie configurations, identifies all current job
     `systemctl restart cpufrequtils 2>/dev/null || true`  
 `fi`  
 
-*`# 2. Capture the exact hostname as recognized by your Slurm Controller`*  
+*`# 2. Capture the exact hostname and record stranded jobs before touching node state`*  
 `NODE_NAME=$(hostname)`  
 `echo "Target Node: ${NODE_NAME}"`
 
-*`# 3. Extract and requeue ALL jobs running on this physical node`*  
-*`# This is generalized: it affects all frameworks (GROMACS, Amber, PyTorch, etc.)`*  
-`ACTIVE_JOBS=$(squeue -w "${NODE_NAME}" -t RUNNING -h -o "%i" || true)`
+`STRANDED_RUNNING=$(squeue -w "${NODE_NAME}" -t RUNNING -h -o "%i" 2>/dev/null || true)`  
+`HELD_LAUNCH_FAILED=$(squeue -w "${NODE_NAME}" -t PENDING -h -o "%i %r" 2>/dev/null | grep -i "launch" | awk '{print $1}' || true)`  
+`ALL_TARGET_JOBS=$(echo -e "${STRANDED_RUNNING}\n${HELD_LAUNCH_FAILED}" | tr ' ' '\n' | grep -E '^[0-9]+$' | sort -u || true)`
 
-`if [ -n "${ACTIVE_JOBS}" ]; then`  
-    `echo "Found active running jobs stranded on node. Forcing requeue..."`  
-    `echo "${ACTIVE_JOBS}" | xargs -r scontrol requeue`  
-`else`  
-    `echo "No running tasks detected on this node cluster footprint."`  
-`fi`
-
-*`# 4. Cleanly wipe hanging child tasks and step execution environments`*  
+*`# 3. Cleanly wipe hanging child tasks, cgroups, and step execution environments`*  
 `echo "Purging lingering job processes and step execution environments..."`  
 `if [ -d /sys/fs/cgroup ]; then`  
     `while IFS= read -r proc_file; do`  
@@ -104,19 +97,30 @@ This generalized script purges zombie configurations, identifies all current job
 `done`  
 `pkill -9 -f slurmstepd 2>/dev/null || true`
 
-*`# 5. Cycle the local execution agent to drop corrupted state tracking maps`*  
-`echo "Cycling local slurm processor agent..."`  
-`systemctl stop OpenSM slurmd 2>/dev/null || true`  
-`systemctl stop slurmd || true`  
-`sleep 1`  
-`systemctl start slurmd`
-
-*`# 6. Reset the NVIDIA Multi-Process Service (MPS) framework if it is active`*  
+*`# 4. Reset the NVIDIA Multi-Process Service (MPS) framework if present`*  
 `if command -v nvidia-cuda-mps-control &> /dev/null; then`  
     `echo "NVIDIA Stack detected. Cleaning up global compute pipes..."`  
-    `nvidia-cuda-mps-control quit || true`  
-    `sleep 2`  
-    `nvidia-cuda-mps-control -d`  
+    `nvidia-cuda-mps-control quit 2>/dev/null || true`  
+    `sleep 1`  
+    `nvidia-cuda-mps-control -d 2>/dev/null || true`  
+`fi`
+
+*`# 5. Cycle the local slurmd execution agent to re-register clean state`*  
+`echo "Cycling local slurm processor agent..."`  
+`systemctl stop OpenSM slurmd 2>/dev/null || true`  
+`systemctl stop slurmd 2>/dev/null || true`  
+`sleep 1`  
+`systemctl start slurmd`  
+`sleep 2`  
+`scontrol update nodename="${NODE_NAME}" state=RESUME 2>/dev/null || true`
+
+*`# 6. Requeue and release stranded jobs now that the node is fully healthy`*  
+`if [ -n "${ALL_TARGET_JOBS}" ]; then`  
+    `echo "Requeuing and releasing target jobs on node: ${ALL_TARGET_JOBS}"`  
+    `echo "${ALL_TARGET_JOBS}" | xargs -r scontrol requeue 2>/dev/null || true`  
+    `echo "${ALL_TARGET_JOBS}" | xargs -r scontrol release 2>/dev/null || true`  
+`else`  
+    `echo "No stranded running or held tasks detected on this node footprint."`  
 `fi`
 
 `echo "=== Recovery Pipeline Successfully Completed ==="`
