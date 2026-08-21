@@ -86,9 +86,23 @@ This generalized script purges zombie configurations, identifies all current job
     `echo "No running tasks detected on this node cluster footprint."`  
 `fi`
 
-*`# 4. Cleanly wipe hanging step daemons from the local Linux process tree`*  
-`echo "Purging lingering step execution environments..."`  
-`pkill -9 slurmstepd || true`
+*`# 4. Cleanly wipe hanging child tasks and step execution environments`*  
+`echo "Purging lingering job processes and step execution environments..."`  
+`if [ -d /sys/fs/cgroup ]; then`  
+    `while IFS= read -r proc_file; do`  
+        `if [ -n "${proc_file}" ] && [ -f "${proc_file}" ]; then`  
+            `while read -r pid; do`  
+                `if [ -n "${pid}" ] && [ "${pid}" -gt 1 ]; then`  
+                    `kill -9 "${pid}" 2>/dev/null || true`  
+                `fi`  
+            `done < "${proc_file}" || true`  
+        `fi`  
+    `done < <(find /sys/fs/cgroup \( -path "*slurm*job*" -o -path "*slurm*step*" -o -path "*/slurm/*" \) \( -name "cgroup.procs" -o -name "tasks" \) 2>/dev/null || true)`  
+`fi`  
+`for s_pid in $(pgrep -f slurmstepd 2>/dev/null || true); do`  
+    `pkill -9 -P "${s_pid}" 2>/dev/null || true`  
+`done`  
+`pkill -9 -f slurmstepd 2>/dev/null || true`
 
 *`# 5. Cycle the local execution agent to drop corrupted state tracking maps`*  
 `echo "Cycling local slurm processor agent..."`  
