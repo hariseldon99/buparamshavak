@@ -1,0 +1,7 @@
+slurm-power-recovery (1.0.0-1) unstable; urgency=medium
+
+  * Initial production packaging release.
+  * Generalized node identification to automatically drop/requeue all running tasks.
+  * Added automated CPU frequency scaling and ACPI PPC throttling override.
+
+ -- Lab Admin <admin@shavak.cluster>  Fri, 21 Aug 2026 10:39:12 +0530

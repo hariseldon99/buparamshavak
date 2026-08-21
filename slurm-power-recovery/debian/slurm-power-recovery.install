@@ -1,0 +1,2 @@
+src/slurm-recovery-hook.sh usr/libexec/slurm-power-recovery/
+src/slurm-power-recovery.service lib/systemd/system/

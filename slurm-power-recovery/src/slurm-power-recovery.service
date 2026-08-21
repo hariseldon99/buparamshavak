@@ -1,0 +1,12 @@
+[Unit]
+Description=Automated Generalized Slurm, CPU Frequency Scaling, and NVIDIA MPS Post-Hibernation Reset Hook
+After=hibernate.target hybrid-sleep.target suspend.target
+StartLimitIntervalSec=0
+
+[Service]
+Type=oneshot
+RemainAfterExit=no
+ExecStart=/usr/libexec/slurm-power-recovery/slurm-recovery-hook.sh
+
+[Install]
+WantedBy=hibernate.target hybrid-sleep.target suspend.target

@@ -1,0 +1,11 @@
+Source: slurm-power-recovery
+Section: admin
+Priority: optional
+Maintainer: Lab Admin <admin@shavak.cluster>
+Build-Depends: debhelper-compat (= 13)
+Standards-Version: 4.6.0
+
+Package: slurm-power-recovery
+Architecture: all
+Depends: ${misc:Depends}, slurm-wlm | munge, procps
+Description: Package system to automate cluster jobs requeueing, CPU frequency scaling recovery, and hardware environment recovery after an OS hibernation resume event.
